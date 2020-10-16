@@ -7,6 +7,15 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+##
+git pull origin master
+cp .env.sample .env
+composer install  // 安装依赖
+//需要先创建数据库
+php artisan migrate  // 数据库迁移
+php artisan storage:link  // 创建storage与public的链接
+php artisan serve //启动服务器
+
 ## 路由文件
 位于routes里，只用web.php及api.php
 
@@ -25,20 +34,12 @@
 ## 模型及数据表迁移文件
 模型位于app文件夹的model里
 
-迁移文件位于database/migrations
+迁移文件位于database/migrations,使用下面命令迁移及回滚迁移
+php artisan migrate
+php artisan migrate:rollback
 
 ## CSS JS文件
 后台的CSS文件利用resources/sass/app.sass进行修改 使用命令 npm run watch
     JS文件位于public/js里
 
 前台CSS以及JS文件均位于public里
-
-## 创建storage与public的链接
-php artisan storage:link
-
-## 缺少vendor文件夹
-需要使用以下命令行安装
-composer require laravel/ui --dev
-生成基本脚手架
-php artisan ui bootstrap
-php artisan ui vue
