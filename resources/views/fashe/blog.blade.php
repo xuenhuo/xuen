@@ -73,14 +73,14 @@
 										<span class="m-l-3 m-r-6">|</span>
 									</span>
 
-									{{-- <span>
-										{{$tags}}
+									<span>
+										{{$article->tags}}
 										<span class="m-l-3 m-r-6">|</span>
 									</span>
 
 									<span>
-										{{$comments_count}} Comments
-									</span> --}}
+										{{$article->comments_count}} Comments
+									</span>
 								</div>
 
 								<p class="p-b-12">

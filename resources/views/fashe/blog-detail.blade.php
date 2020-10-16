@@ -81,12 +81,12 @@
 									</span>
 
 									<span>
-										{{$article_tags}}
+										{{$article->tags}}
 										<span class="m-l-3 m-r-6">|</span>
 									</span>
 
 									<span>
-										{{$comments_count}} Comments
+										{{$article->comments_count}} Comments
 									</span>
 								</div>
 

@@ -29,7 +29,7 @@ class LoginController extends AdminController
     }
 
     // 退出后跳转页面
-    protected function logout()
+    protected function loggedOut(Request $request)
     {
         return redirect(route('admin.login'));
     }
