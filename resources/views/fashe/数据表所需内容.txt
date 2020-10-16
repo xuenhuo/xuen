@@ -1,0 +1,44 @@
+数据表：
+1.用户：
+    名称
+    邮箱
+    密码
+2.产品：
+    产品名称
+    产品分类：衣服（dresses），手表（watches）（属于配件类），太阳镜（sunglasses）（属于配件类），
+            鞋类（footerwear），包袋（bags）（属于配件类）
+    产品标签：新品（new），折扣（sale）
+    产品位置：主页大广告，产品推荐（FEATURED PRODUCTS），限时打折
+    产品适合人群：小孩，男人，女人
+    产品颜色：白色，灰色，蓝色，黑色等
+    产品价格
+    产品SKU：颜色等
+    产品图片：需要多张
+    产品尺寸
+    产品介绍
+    产品描述
+    产品附加信息
+    一产品对多评论
+    关系：一评论与一用户，多产品对多标签，多产品对多分类
+3.博客：
+    文章：作者，标题，图片，时间，内容，标签，评论
+    评论：用户，时间，内容
+    关系：一文章与一用户（作者），一文章与多评论，一用户与一评论，多文章对多标签
+4.主页头部跟尾部的ytb等去掉，FOLLOW US ON INSTAGRAM去掉。
+
+
+
+1.index featured还有问题
+2.blog comment还有问题
+3.blog-sub category还有问题 tag还有问题
+4.blog-detail comment还有问题 tag还有问题
+5.articlecontroller show还有问题
+6.product category还有问题
+
+
+
+1.article 增加字段
+2.cart跟product多对多关联 跟user一对一关联
+3.attribute 增加字段
+4.product 增加一个checkbox字段判断是否优惠 以及在主页限时特价显示
+5.category checkbox字段多增加几个数 判断是否在主页显示
