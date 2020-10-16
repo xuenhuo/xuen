@@ -19,6 +19,7 @@ class ArticleController extends Controller
     {
         //
         $articles = Article::paginate(5);
+        $articles = $articles->with('tags')->get();
         $products = Product::where('featured', 1)->paginate(5);
         $categories = Category::paginate(5);
         $tags = Tag::all();
