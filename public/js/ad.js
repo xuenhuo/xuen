@@ -44,11 +44,11 @@ $(document).ready(function () {
         $('#adsave').val('update');
         var adid = $(this).val();
         $('#adid').val(adid);
-        $.get(url+'/'+adid, function (data) {
-            console.log(url+adid);
+        $.get(adurl+'/'+adid, function (data) {
+            console.log(arurl+adid);
             console.log(data);
-            $('#title').val(data.title);
-            $('#subtitle').val(data.subtitle);
+            $('#adtitle').val(data.title);
+            $('#adsubtitle').val(data.subtitle);
             $("#viewAdphoto").attr("src", "/storage/ads/"+ data.photo);
             $("#viewAdphoto").css("display", "block");
         });

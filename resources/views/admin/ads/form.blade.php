@@ -19,6 +19,7 @@
                     <div class="form-group">
                         <label for="adphoto" class="control-label">图片</label>
                         <input type="file" class="form-control" id="adphoto" name="photo">
+                        <img id="viewAdphoto" style="display:none; width:100px;height:100px">
                     </div>
                 </form>
             </div>

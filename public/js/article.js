@@ -53,15 +53,16 @@ $(document).ready(function () {
         $('#arsave').val('update');
         var arid = $(this).val();
         $('#arid').val(arid);
+        console.log(arurl+'/'+arid)
         $.get(arurl+'/'+arid, function (data) {
             var article = data[0];
-            var tags = data[1];
+            var tags = [1];
             $('#tags').val(tags);
             $('#artitle').val(article.title);
             $('#arauthor').val(article.author);
             $('#arcontent').val(article.content);
             tinyMCE.get('arcontent').setContent(article.content);
-            $("#viewArphoto").attr("src", "/storage/articles/"+ article.photo);
+            $("#viewArphoto").attr("src", "/storage/articles/"+article.photo);
             $("#viewArphoto").css("display", "block");
         });
 

@@ -10,7 +10,7 @@ class Article extends Model
     protected $table = 'articles';
     protected $primaryKey = 'id';
     public $timestamp = true;
-    protected $fillable = ['title', 'author', 'photo', 'datetime', 'content'];
+    protected $fillable = ['title', 'author', 'photo', 'content'];
     public function comments() {
         return $this->hasMany(Comment::class);
     }

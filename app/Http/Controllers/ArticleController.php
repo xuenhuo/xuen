@@ -19,8 +19,8 @@ class ArticleController extends Controller
     {
         //
         $articles = Article::paginate(5);
-        $articles = $articles->with('tags')->get();
-        $articles = $articles->withCount('comments')->get();
+        // $articles = $articles->with('tags')->get();
+        // $articles = $articles->withCount('comments')->get();
         $products = Product::where('featured', 1)->paginate(5);
         $categories = Category::paginate(5);
         $tags = Tag::all();
@@ -60,13 +60,11 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $article = $article->with('tags')->get();
         $article = $article->withCount('comments')->get();
-        $article_tags = $article->tags()->get()->pluck('title');
         $comments = $article->comments()->get();
         $products = Product::where('featured', 1)->paginate(5);
         $categories = Category::paginate(5);
         $tags = Tag::all();
-        return view('fashe.blog-detail', compact('article', 'article_tags', 'comments', 'comments_count',
-        'products', 'categories', 'tags'));
+        return view('fashe.blog-detail', compact('article', 'products', 'comments', 'categories', 'tags'));
     }
 
     /**

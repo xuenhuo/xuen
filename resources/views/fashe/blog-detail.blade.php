@@ -101,7 +101,7 @@
 								</span>
 
 								<div class="wrap-tags flex-w">
-									@foreach ($article_tags as $artag)
+									@foreach ($article->tags as $artag)
 									<a href="#" class="tag-item">
 										{{$artag->title}}
 									</a>

@@ -117,7 +117,7 @@ class ArticleController extends AdminController
             'tags' => 'sometimes|string|max:255',
         ]);
         //
-        $article->title =  $request->get('title');
+        $article->title = $request->get('title');
         $article->author =  $request->get('author');
         if ($request->file('photo') != null) {
             $path = $request->file('photo')->store('public/articles');
