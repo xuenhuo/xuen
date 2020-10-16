@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Hash;
 use App\model\Admin;
 
 class setup extends Command
@@ -38,6 +39,7 @@ class setup extends Command
      */
     public function handle()
     {
-        Admin::create(array('name' => 'admin', 'email' => 'test@test.com', 'password' => '123123'));
+      Admin::truncate();
+      Admin::create(array('name' => 'admin', 'email' => 'test@test.com', 'password' => Hash::make('123123')));
     }
 }
