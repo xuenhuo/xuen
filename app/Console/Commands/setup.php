@@ -39,7 +39,7 @@ class setup extends Command
      */
     public function handle()
     {
-      Admin::truncate();
+      // Admin::truncate();
       Admin::create(array('name' => 'admin', 'email' => 'test@test.com', 'password' => Hash::make('123123')));
     }
 }
