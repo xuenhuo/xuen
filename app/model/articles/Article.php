@@ -15,7 +15,7 @@ class Article extends Model
         return $this->hasMany(Comment::class);
     }
     public function tags() {
-        return $this->belongsToMany(Tag::class, 'articlestags', 'article_id', 'tag_id');
+        return $this->belongsToMany(Tag::class, 'articles_tags', 'article_id', 'tag_id');
     }
     public function delete(){
         $this->comments()->delete();

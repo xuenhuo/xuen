@@ -12,7 +12,7 @@ class Tag extends Model
     public $timestamp = true;
     protected $fillable = ['title'];
     public function articles() {
-        return $this->belongsToMany(Article::class, 'articlestags', 'tag_id', 'article_id');
+        return $this->belongsToMany(Article::class, 'articles_tags', 'tag_id', 'article_id');
     }
     public function parent(){
         return $this->hasOne(get_class($this), $this->getKeyName(), 'parent_id');
