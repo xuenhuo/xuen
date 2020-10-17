@@ -54,10 +54,8 @@ class ProductController extends Controller
         //
         $product = Product::find($id);
         $reviews = $product->reviews()->get();
-        $attributes = Attribute::where('product_id', $id)->get();
-        $categories = $product->categories()->get()->pluck('title');
-        $details = $attributes->attribute_datails()->get();
-        return view('fashe.product-detail', compact('product', 'reviews', 'attributes', 'categories', 'details'));
+        $reviews_count = $product->reviews()->count();
+        return view('fashe.product-detail', compact('product', 'reviews', 'reviews_count'));
     }
 
     /**

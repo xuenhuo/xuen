@@ -1,20 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\model\products\Category;
+use App\model\products\Order;
+use App\model\products\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
-class CategoryController extends Controller
+class OrderController extends AdminController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
         //
+        return view('admin.products.orders.index', [
+            'orders' => Order::paginate(10),
+        ]);
     }
 
     /**
@@ -33,7 +38,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $user_id)
     {
         //
     }
@@ -44,13 +49,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id, Order $order)
     {
         //
-        $categories = Category::paginate(5);
-        $category = Category::find($id);
-        $products = $category->products()->get();
-        return view('fashe.category', compact('categories', 'products'));
+        return [$user_id, $order];
     }
 
     /**
@@ -82,8 +84,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id, Order $order)
     {
         //
+        $order->delete();
+        return response()->json(['success']);
     }
 }

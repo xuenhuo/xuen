@@ -20,6 +20,9 @@ class Product extends Model
     public function categories() {
         return $this->belongsToMany(Category::class, 'products_categories', 'product_id', 'category_id');
     }
+    public function orders() {
+        return $this->belongsToMany(Order::class, 'products_orders', 'product_id', 'order_id');
+    }
     public function delete(){
         $this->reviews()->delete();
         return parent::delete();

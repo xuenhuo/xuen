@@ -69,7 +69,7 @@
 	</section>
 
 	<!-- category -->
-	{{-- <section class="banner bgwhite p-t-40 p-b-40">
+	<section class="banner bgwhite p-t-40 p-b-40">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
@@ -79,7 +79,7 @@
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="{{route('categories.show', $dresses->id)}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+							<a href="{{route('categories.show', $dresses[0]->id)}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								Dresses
 							</a>
 						</div>
@@ -91,7 +91,7 @@
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="{{route('categories.show', $sunglasses->id)}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+							<a href="{{route('categories.show', $sunglasses[0]->id)}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								Sunglasses
 							</a>
 						</div>
@@ -105,7 +105,7 @@
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="{{route('categories.show', $watches->id)}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+							<a href="{{route('categories.show', $watches[0]->id)}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								Watches
 							</a>
 						</div>
@@ -117,7 +117,7 @@
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="{{route('categories.show', $footerwear->id)}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+							<a href="{{route('categories.show', $footerwear[0]->id)}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								Footerwear
 							</a>
 						</div>
@@ -131,7 +131,7 @@
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="{{route('categories.show', $bags->id)}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+							<a href="{{route('categories.show', $bags[0]->id)}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								Bags
 							</a>
 						</div>
@@ -161,7 +161,7 @@
 				</div>
 			</div>
 		</div>
-	</section> --}}
+	</section>
 
 	<!-- feature -->
 	<section class="newproduct bgwhite p-t-45 p-b-105">
@@ -326,7 +326,7 @@
 
 						<div class="block3-txt p-t-14">
 							<h4 class="p-b-7">
-								<a href="{{route('articles.show', $aticle->id)}}" class="m-text11">
+								<a href="{{route('articles.show', $article->id)}}" class="m-text11">
 									{{$article->title}}
 								</a>
 							</h4>

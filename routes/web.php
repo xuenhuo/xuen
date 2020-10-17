@@ -64,6 +64,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('ads', 'AdController')->only([
         'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
     ]);
+    //后台订单控制器
+    Route::resource('user.order', 'OrderController')->only([
+        'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+    ]);
 });
 
 //前台用户认证
@@ -93,5 +97,9 @@ Route::resource ('products.reviews', 'ReviewController')->only([
 ]);
 //前台分类控制器
 Route::resource ('categories', 'CategoryController')->only([
+    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+]);
+//前台订单控制器
+Route::resource ('user.order', 'OrderController')->only([
     'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
 ]);

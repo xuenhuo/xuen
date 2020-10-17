@@ -55,7 +55,7 @@
 							<a href="{{route('articles.show', $article->id)}}" class="item-blog-img pos-relative dis-block hov-img-zoom">
 								<img src="/storage/articles/{{$article->photo}}" alt="IMG-BLOG">
 
-								<span class="item-blog-date dis-block flex-c-m pos1 size17 bg4 s-text1">
+								<span class="item-blog-date dis-block flex-c-m pos1 size30 bg4 s-text1">
 									{{$article->created_at}}
 								</span>
 							</a>
@@ -74,7 +74,9 @@
 									</span>
 
 									<span>
-										{{$article->tags}}
+										@foreach ($article->tags as $tag)
+										{{$tag->title}}
+										@endforeach
 										<span class="m-l-3 m-r-6">|</span>
 									</span>
 

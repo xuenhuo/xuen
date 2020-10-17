@@ -89,10 +89,10 @@ class Attribute_detailController extends AdminController
     {
         //
         $request->validate([
-            'title' => 'required|string|max:255',
-            'price' => 'string|max:255',
-            'position' => 'string',
-            'attribute_id' => 'string',
+            'title' => 'sometimes|required|string|max:255',
+            'price' => 'sometimes|string|max:255',
+            'position' => 'sometimes|string',
+            'attribute_id' => 'sometimes|string',
         ]);
         $attribute_detail->title = $request->get('title');
         $attribute_detail->price = $request->get('price');
