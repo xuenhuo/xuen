@@ -4,11 +4,26 @@ namespace App\Http\Controllers;
 
 use App\model\products\Attribute;
 use App\model\products\Category;
+use App\model\products\Order;
 use App\model\products\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->beforeFilter('cart', array('only' => array('ordersIndex')));
+        // ->only(array('index', 'list'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -55,7 +70,8 @@ class ProductController extends Controller
         $product = Product::find($id);
         $reviews = $product->reviews()->get();
         $reviews_count = $product->reviews()->count();
-        return view('fashe.product-detail', compact('product', 'reviews', 'reviews_count'));
+        $num = Str::random(16);
+        return view('fashe.product-detail', compact('product', 'reviews', 'reviews_count', 'num'));
     }
 
     /**

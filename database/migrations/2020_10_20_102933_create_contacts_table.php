@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttributedetailTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateAttributedetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('attribute_detail', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->decimal('price');
-            $table->string('position')->nullable()->default(1);
-            $table->foreignId('attribute_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->string('phone_num');
+            $table->string('address');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateAttributedetailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attribute_detail');
+        Schema::dropIfExists('contacts');
     }
 }

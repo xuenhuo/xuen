@@ -1,23 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Admin\AdminController;
+use App\model\Contact;
 use Illuminate\Http\Request;
-use App\model\Ad;
+use Illuminate\Support\Facades\Auth;
 
-class AdController extends AdminController
+class ContactController extends UserController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        return view('admin.ads.index', [
-            'ads' => Ad::paginate(7)
+        return view('fashe.user', [
+            'contacts' => Contact::all(),
+            'user_id' => Auth::id(),
         ]);
     }
 
@@ -41,18 +42,19 @@ class AdController extends AdminController
     {
         //
         $request->validate([
-            'title' => 'required|string|max:255',
-            'subtitle' => 'required|string|max:255',
-            'photo' =>'required'
+            'name' => 'required|string',
+            'phone_num' => 'required|string',
+            'address' => 'required',
+            'user_id' => 'required|string',
         ]);
-        //
-        $path = $request->file('photo')->store('public/ads');
-        $ad = Ad::create([
-            'title' => $request['title'],
-            'subtitle' => $request['subtitle'],
-            'photo' => explode("/", $path)[2],
+        $user_id = Auth::id();
+        $contact = Contact::create([
+            'name' => $request['name'],
+            'phone_num' => $request['phone_num'],
+            'address' => $request['address'],
+            'user_id' => $user_id,
         ]);
-        return $ad;
+        return $contact;
     }
 
     /**
@@ -64,8 +66,8 @@ class AdController extends AdminController
     public function show($id)
     {
         //
-        $ad = Ad::find($id);
-        return $ad;
+        $contact = Contact::find($id);
+        return $contact;
     }
 
     /**
@@ -89,20 +91,20 @@ class AdController extends AdminController
     public function update(Request $request, $id)
     {
         //
-        $ad = Ad::find($id);
+        $contact = Contact::find($id);
         $request->validate([
-            'title' => 'sometimes|required|string|max:255',
-            'subtitle' => 'sometimes|required|string|max:255',
-            'photo' =>'sometimes|required'
+            'name' => 'sometimes|required|string',
+            'phone_num' => 'sometimes|required|string',
+            'address' => 'sometimes|required',
+            'user_id' => 'sometimes|required|string',
         ]);
-        $ad->title =  $request->get('title');
-        $ad->subtitle = $request->get('subtitle');
-        if ($request->file('photo') != null) {
-            $path = $request->file('photo')->store('public/ads');
-            $ad->ad_photo = explode("/", $path)[2];
-        }
-        $ad->save();
-        return $ad;
+        $contact->name = $request->get('name');
+        $contact->phone_num = $request->get('phone_num');
+        $contact->address = $request->get('address');
+        $contact->user_id = $request->get('user_id');
+        $contact->save();
+
+        return $contact;
     }
 
     /**
@@ -114,8 +116,8 @@ class AdController extends AdminController
     public function destroy($id)
     {
         //
-        $ad = Ad::find($id);
-        $ad->delete();
+        $contact = Contact::find($id);
+        $contact->delete();
         return response()->json(['success']);
     }
 }

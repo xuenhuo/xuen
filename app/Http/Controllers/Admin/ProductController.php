@@ -106,10 +106,10 @@ class ProductController extends AdminController
     public function show($id)
     {
         //
-        $products = Product::find($id);
-        $categories = $products->categories()->get()->pluck('title');
-        $attributes = $products->attributes()->get()->pluck('title');
-        return [$products, $categories, $attributes];
+        $product = Product::find($id);
+        $categories = $product->categories()->get()->pluck('title');
+        $attributes = $product->attributes()->get()->pluck('title');
+        return [$product, $categories, $attributes];
     }
 
     /**
@@ -133,7 +133,7 @@ class ProductController extends AdminController
     public function update(Request $request, $id)
     {
         //
-        $products = Product::find($id);
+        $product = Product::find($id);
         $request->validate([
             'title' => 'sometimes|required|string|max:255',
             'subtitle' => 'sometimes|required|string|max:255',
@@ -148,19 +148,19 @@ class ProductController extends AdminController
             'attributes' => 'sometimes|string|max:255',
         ]);
         //
-        $products->title = $request->get('title');
-        $products->subtitle = $request->get('subtitle');
-        $products->price = $request->get('price');
-        $products->sale = $request->get('sale');
-        $products->description = $request->get('description');
-        $products->additional_information =  $request->get('additional_information');
-        $products->featured = $request->get('featured');
-        $products->position = $request->get('position');
+        $product->title = $request->get('title');
+        $product->subtitle = $request->get('subtitle');
+        $product->price = $request->get('price');
+        $product->sale = $request->get('sale');
+        $product->description = $request->get('description');
+        $product->additional_information =  $request->get('additional_information');
+        $product->featured = $request->get('featured');
+        $product->position = $request->get('position');
         if ($request->file('photo') != null) {
             $path = $request->file('photo')->store('public/products');
-            $products->photo = explode("/", $path)[2];
+            $product->photo = explode("/", $path)[2];
         }
-        $products->save();
+        $product->save();
 
         $comma = ',';
         $categories = $request->get('categories');
@@ -225,9 +225,9 @@ class ProductController extends AdminController
                 }
             }
         }
-        $products->categories()->sync($c);
-        $products->attributes()->sync($a);
-        return [$products, $categories, $attributes];
+        $product->categories()->sync($c);
+        $product->attributes()->sync($a);
+        return [$product, $categories, $attributes];
     }
 
     /**
@@ -239,8 +239,8 @@ class ProductController extends AdminController
     public function destroy($id)
     {
         //
-        $products = Product::find($id);
-        $products->delete();
+        $product = Product::find($id);
+        $product->delete();
         return response()->json(['success']);
     }
 }

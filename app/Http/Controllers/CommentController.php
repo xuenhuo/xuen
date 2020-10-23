@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\model\articles\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
-class CommentController extends Controller
+class CommentController extends UserController
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +24,10 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($article_id)
     {
         //
+        return view('blog-detail');
     }
 
     /**
@@ -32,9 +36,21 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($article_id, Request $request)
     {
         //
+        $request->validate([
+            'content' => 'required',
+            'user_id' => 'required',
+            'article_id' => 'required',
+        ]);
+        $user_id = Auth::id();
+        $comment = Comment::create([
+            'content' => $request['content'],
+            'user_id' => $user_id,
+            'article_id' => $article_id,
+        ]);
+        return Redirect::to('articles.comments.create');
     }
 
     /**
@@ -57,6 +73,7 @@ class CommentController extends Controller
     public function edit($id)
     {
         //
+        return view('blog-detail');
     }
 
     /**
@@ -66,9 +83,19 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($article_id, Request $request, Comment $comment)
     {
         //
+        $request->validate([
+            'content' => 'sometimes|required',
+            'user_id' => 'sometimes|required',
+            'article_id' => 'sometimes|required',
+        ]);
+        $user_id = Auth::id();
+        $comment->content = $request->get('content');
+        $comment->user_id = $user_id;
+        $comment->article_id = $article_id;
+        return Redirect::to('articles.comments.edit');
     }
 
     /**

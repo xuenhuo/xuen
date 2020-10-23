@@ -21,9 +21,9 @@
         <li class="nav-item">
             <a class="{{$controller == 'AttributeController' ? 'nav-link active' : 'nav-link'}}" href="{{route('admin.attributes.index')}}">款式列表</a>
         </li>
-        {{-- <li class="nav-item">
+        <li class="nav-item">
             <a class="{{$controller == 'OrderController' ? 'nav-link active' : 'nav-link'}}" href="{{route('admin.orders.index')}}">订单详情</a>
-        </li> --}}
+        </li>
         <li class="nav-item">
             <a class="{{$controller == 'ArticleController' ? 'nav-link active' : 'nav-link'}}" href="{{route('admin.articles.index')}}">博客文章</a>
         </li>

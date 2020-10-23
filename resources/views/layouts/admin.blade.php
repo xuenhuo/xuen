@@ -22,6 +22,7 @@
     <script src="/js/category.js"></script>
     <script src="/js/ad.js"></script>
     <script src="/js/manager.js"></script>
+    <script src="/js/order.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

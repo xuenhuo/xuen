@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\model\products\Attribute_detail;
+use App\model\products\Attribute_details;
 
 class Attribute_detailController extends AdminController
 {
@@ -16,7 +16,7 @@ class Attribute_detailController extends AdminController
     {
         //
         return view('admin.products.attributes.details.index', [
-            'details' => Attribute_detail::where('attribute_id', $attribute_id)->paginate(10),
+            'details' => Attribute_details::where('attribute_id', $attribute_id)->paginate(10),
             'atid' => $attribute_id,
         ]);
     }
@@ -46,7 +46,7 @@ class Attribute_detailController extends AdminController
             'position' => 'string',
             'attribute_id' => 'string',
         ]);
-        $attribute_detail = Attribute_detail::create([
+        $attribute_detail = Attribute_details::create([
             'title' => $request['title'],
             'price' => $request['price'],
             'position' => $request['position'],
@@ -61,7 +61,7 @@ class Attribute_detailController extends AdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($attribute_id, Attribute_detail $attribute_detail)
+    public function show($attribute_id, Attribute_details $attribute_detail)
     {
         //
         return [$attribute_detail, $attribute_id];
@@ -85,7 +85,7 @@ class Attribute_detailController extends AdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($attribute_id, Request $request, Attribute_detail $attribute_detail)
+    public function update($attribute_id, Request $request, Attribute_details $attribute_detail)
     {
         //
         $request->validate([
@@ -108,7 +108,7 @@ class Attribute_detailController extends AdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($attribute_id, Attribute_detail $attribute_detail)
+    public function destroy($attribute_id, Attribute_details $attribute_detail)
     {
         //
         $attribute_detail->delete();

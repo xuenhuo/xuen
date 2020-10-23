@@ -102,44 +102,55 @@
 
 				<!--  -->
 				<div class="p-t-33 p-b-60">
-					@foreach ($product->attributes as $attribute)
-					<div class="flex-m flex-w p-b-10">
-						<div class="s-text15 w-size15 t-center">
-							{{$attribute->title}}
-						</div>
+					<form action="{{route('orders.store')}}" method="post">
+						{{-- <input type="hidden" name="_method" value="PATCH"> --}}
+						@foreach ($product->attributes as $attribute)
+						<div class="flex-m flex-w p-b-10">
+							<div class="s-text15 w-size15 t-center">
+								{{$attribute->title}}
+							</div>
 
-						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
-							<select class="selection-2" name="size">
-								@foreach ($attribute->attribute_details as $detail)
-								<option>{{$detail->title}}</option>
-								@endforeach
-							</select>
+							<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
+								<select class="selection-2" name="details[]">
+									@foreach ($attribute->attribute_details as $detail)
+									<option value="{{$detail->id}}">{{$detail->title}}</option>
+									@endforeach
+								</select>
+							</div>
 						</div>
-					</div>
-					@endforeach
+						@endforeach
 					
-					<div class="flex-r-m flex-w p-t-10">
-						<div class="w-size16 flex-m flex-w">
-							<div class="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
-								<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-									<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-								</button>
+						<div class="flex-r-m flex-w p-t-10">
+							<div class="w-size16 flex-m flex-w">
+								<div class="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
+									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+									</button>
 
-								<input class="size8 m-text18 t-center num-product" type="number" name="num-product" value="1">
+									<input class="size8 m-text18 t-center num-product" type="number" name="num-product" value="1">
 
-								<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-									<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-								</button>
-							</div>
+									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
+										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+									</button>
+								</div>
+								
+								<input type="hidden" name="num" value="{{$num}}">
+								<input type="hidden" name="product" value="{{$product->title}}">
+								<input type="hidden" name="price" value="{{$product->price}}">
+								<input type="hidden" name="status" value="未付款">
 
-							<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
-								<!-- Button -->
-								<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-									Add to Cart
-								</button>
+								<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
+									<!-- Button -->
+									@csrf
+									@method('POST')
+									<input type="submit" value="Add to Cart" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+										{{-- Add to Cart
+									</button> --}}
+								</div>
 							</div>
 						</div>
-					</div>
+						{{-- <input type="submit" value="提交" class="btn btn-primary btn-lg btn-block"/> --}}
+					</form>
 				</div>
 
 				<div class="p-b-45">

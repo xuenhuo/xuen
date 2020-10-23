@@ -50,8 +50,7 @@ class CommentController extends AdminController
     public function show($article_id, Comment $comment)
     {
         //
-        $comments = Comment::where('article_id', $article_id)->get();
-        return $comments;
+        return $comment;
     }
 
     /**

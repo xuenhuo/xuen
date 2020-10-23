@@ -5,20 +5,32 @@ namespace App\Http\Controllers;
 use App\model\Ad;
 use App\model\articles\Article;
 use App\model\products\Category;
+use App\model\products\Order;
 use App\model\products\Product;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
-    /**
+        /**
      * Create a new controller instance.
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        if(Auth::check() === true)
+        {
+            $this->middleware('auth');$user_id = Auth::id();
+            $orders = Order::where('user_id', $user_id)->get();
+            $all_num = count($orders);
+            foreach($orders as $order){
+                $od[] = $order->total;
+            }
+            // $all_total = array_sum($od);
+            View::share('orders', 'all_num');
+        }
+    }
 
     /**
      * Show the application dashboard.

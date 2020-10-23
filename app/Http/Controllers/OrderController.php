@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\model\products\Attribute_details;
+use App\model\Contact;
 use App\model\products\Order;
 use App\model\products\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
-class OrderController extends Controller
+class OrderController extends UserController
 {
     /**
      * Display a listing of the resource.
@@ -18,6 +19,10 @@ class OrderController extends Controller
     public function index()
     {
         //
+        $user_id = Auth::id();
+        return view('fashe.cart', [
+            'orders' => Order::where('user_id', $user_id)->get(),
+        ]);
     }
 
     /**
@@ -37,36 +42,47 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($user_id, Request $request)
+    public function store(Request $request)
     {
         //
         $request->validate([
             'num' => 'required|string',
-            'quantity' => 'required|string',
-            'total' => 'required|string',
-            'user_id' => 'string',
-            'products' => 'string',
+            'status' => 'required|string',
+            'num-product' => 'required|string',
+            'price' => 'required|string',
+            'product' => 'string',
+            'details' => 'array',
         ]);
+        $price = $request->get('price');
+        $quantity = $request->get('num-product');
+        $total = $price*$quantity;
+        $user_id = Auth::id();
         $order = Order::create([
-            'num' => Str::random(16),
-            'quantity' => $request['quantity'],
-            'total' => $request['total'],
+            'num' => $request['num'],
+            'quantity' => $request['num-product'],
+            'status' => $request['status'],
+            'total' => $total,
             'user_id' => $user_id,
         ]);
-        $products = $request->get('products');
-        if (!empty($products)) {
-            $productList = array_filter(explode(",", $products));
-    
-            // Loop through the product array that we just created
-            foreach ($productList as $products) {
-                $product = Product::firstOrCreate(['title' => $products]);
-            }
-    
-            $products = Product::whereIn('title', $productList)->get()->pluck('id');
-    
-            $order->products()->sync($products);
+        $product = $request->get('product');
+        if (!empty($product)) {
+            $product = Product::where('title', $product)->get()->pluck('id');
+            $order->products()->sync($product);
         }
-        return Redirect::to('user.order.create');
+        $detailList = $request->get('details');
+        if (!empty($detailList)) {
+            foreach ($detailList as $details) {
+                $detail = Attribute_details::find(['id' => $details]);
+            }
+            $details = Attribute_details::whereIn('id', $detailList)->get()->pluck('id');
+            $order->attribute_details()->sync($details);
+        }
+        // $contact = $request->get('contact');
+        // if(!empty($contact)) {
+        //     $contact = Contact::where('address', $contact)->get()->pluck('id');
+        //     $order->contacts()->sync($contact);
+        // }
+        return redirect()->route('orders.create');
     }
 
     /**
@@ -75,10 +91,11 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($user_id, Order $order)
+    public function show($id)
     {
         //
-        return [$order, $user_id];
+        $order = Order::find($id);
+        return $order;
     }
 
     /**
@@ -99,7 +116,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($user_id, Request $request, Order $order)
+    public function update($id, Request $request)
     {
         //
     }
@@ -110,10 +127,11 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user_id, Order $order)
+    public function destroy($id)
     {
         //
+        $order = Order::find($id);
         $order->delete();
-        return response()->json(['success']);
+        return redirect()->route('orders.index');
     }
 }

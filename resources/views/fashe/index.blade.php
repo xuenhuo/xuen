@@ -69,7 +69,7 @@
 	</section>
 
 	<!-- category -->
-	<section class="banner bgwhite p-t-40 p-b-40">
+	{{-- <section class="banner bgwhite p-t-40 p-b-40">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
@@ -161,7 +161,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --}}
 
 	<!-- feature -->
 	<section class="newproduct bgwhite p-t-45 p-b-105">

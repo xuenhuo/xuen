@@ -42,3 +42,24 @@
 3.attribute 增加字段
 4.product 增加一个checkbox字段判断是否优惠 以及在主页限时特价显示
 5.category checkbox字段多增加几个数 判断是否在主页显示
+
+
+user->order 一对多
+order<->product 多对多  order->details
+product<->attribute 多对多
+attribute->details 一对多
+user->comments 一对多
+article->comments 一对多
+
+
+Order
+status:  订单完成， 订单失败
+售前：未付款， 等待付款中， 付款成功，
+售中：正在拣件， 已出库， 正在送货中， 已送达， 已确认收件，
+售后：申请返修处理中， 申请换货处理中， 申请仅退款处理中， 申请退货退款处理中， 退款成功， 退货退款成功
+
+order生成
+1.原本的五个（一个为用户ID）
+2.与product绑定，与detail绑定->最大的问题 如何从foreach中select多个details
+3.与contact绑定
+4.订单完成

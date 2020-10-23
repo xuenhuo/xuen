@@ -16,6 +16,7 @@
                     <div class="form-group">
                         <label for="prtitle" class="control-label">标题</label>
                         <input type="text" class="form-control col-md-4" id="prtitle" name="title">
+                    </div>
                     <div class="form-group">
                         <label for="prsubtitle" class="control-label">副标题</label>
                         <input type="text" class="form-control col-md-4" id="prsubtitle" name="subtitle">

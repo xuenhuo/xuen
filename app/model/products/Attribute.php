@@ -15,7 +15,7 @@ class Attribute extends Model
         return $this->belongsToMany(Product::class, 'products_attributes', 'attribute_id', 'product_id');
     }
     public function attribute_details() {
-        return $this->hasMany(Attribute_detail::class);
+        return $this->hasMany(Attribute_details::class);
     }
     public function delete(){
         $this->attribute_details()->delete();

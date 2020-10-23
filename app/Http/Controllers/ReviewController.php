@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\model\products\Product;
+use App\model\products\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
-class ReviewController extends Controller
+class ReviewController extends UserController
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +25,7 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($product_id)
     {
         //
     }
@@ -32,9 +36,21 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $product_id)
     {
         //
+        $request->validate([
+            'content' => 'required',
+            'user_id' => 'required',
+            'product_id' => 'required',
+        ]);
+        $user_id = Auth::id();
+        $review = Product::create([
+            'content' => $request['content'],
+            'user_id' => $user_id,
+            'product_id' => $product_id,
+        ]);
+        return Redirect::to('products.reviews.create');
     }
 
     /**
@@ -66,9 +82,19 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $product_id, Review $review)
     {
         //
+        $request->validate([
+            'content' => 'sometimes|required',
+            'user_id' => 'sometimes|required',
+            'product_id' => 'sometimes|required',
+        ]);
+        $user_id = Auth::id();
+        $review->content = $request->get('content');
+        $review->user_id = $user_id;
+        $review->product_id = $product_id;
+        return Redirect::to('products.reviews.edit');
     }
 
     /**

@@ -51,8 +51,7 @@ class ReviewController extends AdminController
     public function show($product_id, Review $review)
     {
         //
-        $reviews = Review::where('product_id', $product_id)->get();
-        return $reviews;
+        return $review;
     }
 
     /**

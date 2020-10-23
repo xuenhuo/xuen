@@ -65,7 +65,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
     ]);
     //后台订单控制器
-    Route::resource('user.order', 'OrderController')->only([
+    Route::resource('orders', 'OrderController')->only([
         'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
     ]);
 });
@@ -73,8 +73,14 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 //前台用户认证
 Auth::routes(['verify' => true]);
 
+//前台用户中心
+Route::get('index', 'UserController@index')->name('index');
+Route::get('header', 'UserController@header');
+Route::resource('contacts', 'ContactController')->only([
+    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+]);
 //前台主页
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
 //前台关于我们
 Route::get('about', 'HomeController@about')->name('about');
 //前台联系我们
@@ -100,6 +106,6 @@ Route::resource ('categories', 'CategoryController')->only([
     'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
 ]);
 //前台订单控制器
-Route::resource ('user.order', 'OrderController')->only([
+Route::resource ('orders', 'OrderController')->only([
     'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
 ]);

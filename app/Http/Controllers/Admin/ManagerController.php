@@ -47,12 +47,12 @@ class ManagerController extends AdminController
             'email' => 'required|string|email|max:255|unique:admins',
             'password' => 'required|string|min:6|confirmed',
         ]);
-        $managers = Admin::create([
+        $manager = Admin::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        return $managers;
+        return $manager;
     }
 
     /**
@@ -64,8 +64,8 @@ class ManagerController extends AdminController
     public function show($id)
     {
         //
-        $managers = Admin::find($id);
-        return $managers;
+        $manager = Admin::find($id);
+        return $manager;
     }
 
     /**
