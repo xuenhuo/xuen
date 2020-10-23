@@ -13,22 +13,6 @@ use Illuminate\Support\Facades\View;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    protected function cart() {
-        if(Auth::check() === true)
-        {
-            // $this->middleware('auth');
-            $user_id = Auth::id();
-            $orders = Order::where('user_id', $user_id)->get();
-            // dd($user_id);
-            // $all_num = count($orders);
-            // foreach($orders as $order){
-            //     $od[] = $order->total;
-            // }
-            // $all_total = array_sum($od);
-            View::share('orders', $orders);
-        }
-    }
 }
 
 // class CartController extends BaseController
