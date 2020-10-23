@@ -9,6 +9,7 @@ use App\model\products\Order;
 use App\model\products\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use App\Providers\CartServiceProvider;
 
 class HomeController extends Controller
 {
@@ -22,13 +23,12 @@ class HomeController extends Controller
         if(Auth::check() === true)
         {
             $this->middleware('auth');$user_id = Auth::id();
-            $orders = Order::where('user_id', $user_id)->get();
-            $all_num = count($orders);
-            foreach($orders as $order){
-                $od[] = $order->total;
-            }
+            // $orders = Order::where('user_id', $user_id)->get();
+            // $all_num = count($orders);
+            // foreach($orders as $order){
+            //     $od[] = $order->total;
+            // }
             // $all_total = array_sum($od);
-            View::share('orders', 'all_num');
         }
     }
 

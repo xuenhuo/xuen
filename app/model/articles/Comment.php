@@ -10,9 +10,11 @@ class Comment extends Model
     protected $table = 'comments';
     protected $primaryKey = 'id';
     public $timestamp = true;
-    protected $fillable = ['content', 'commentable_id', 'commentable_type', 'user_id'];
-    public function commentable()
-    {
-        return $this->morphTo();
+    protected $fillable = ['content', 'article_id', 'user_id'];
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    public function article() {
+        return $this->belongsTo(Article::class);
     }
 }

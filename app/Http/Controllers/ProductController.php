@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function __construct()
     {
-        $this->beforeFilter('cart', array('only' => array('ordersIndex')));
+        // $this->beforeFilter('cart', array('only' => array('ordersIndex')));
         // ->only(array('index', 'list'));
     }
 

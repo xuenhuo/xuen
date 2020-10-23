@@ -8,6 +8,7 @@ use App\model\products\Order;
 use App\model\products\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class OrderController extends UserController
 {
@@ -20,6 +21,8 @@ class OrderController extends UserController
     {
         //
         $user_id = Auth::id();
+        $orders = Order::where('user_id', $user_id)->get();
+        View::share('orders', $orders);
         return view('fashe.cart', [
             'orders' => Order::where('user_id', $user_id)->get(),
         ]);
