@@ -75,7 +75,6 @@ Auth::routes(['verify' => true]);
 
 //前台用户中心
 Route::get('index', 'UserController@index')->name('index');
-Route::get('header', 'UserController@header');
 Route::resource('contacts', 'ContactController')->only([
     'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
 ]);
@@ -107,5 +106,9 @@ Route::resource ('categories', 'CategoryController')->only([
 ]);
 //前台订单控制器
 Route::resource ('orders', 'OrderController')->only([
+    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+]);
+//前台购物车控制器
+Route::resource ('carts', 'CartController')->only([
     'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
 ]);

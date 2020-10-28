@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdersAttributeDetailsTable extends Migration
+class CreateCartDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateOrdersAttributeDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders_attribute_details', function (Blueprint $table) {
+        Schema::create('cart_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_detail_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cart_id')->constrained()->onDelete('cascade');
             $table->foreignId('attribute_detail_id')->constrained()->onDelete('cascade');
             $table->foreignId('attribute_id')->constrained()->onDelete('cascade');
             $table->string('title');
@@ -32,6 +32,6 @@ class CreateOrdersAttributeDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders_attribute_details');
+        Schema::dropIfExists('cart_details');
     }
 }

@@ -15,6 +15,7 @@
                             <th>编号</th>
                             <th>用户情况</th>
                             <th>产品情况</th>
+                            <th></th>
                             <th>数量</th>
                             <th>总价</th>
                             <th>状态</th>
@@ -27,22 +28,24 @@
                                 <td>{{$order->num}}</td>
                                 <td>
                                     @foreach ($order->contacts as $contact)
-                                        <td>{{$contact->name}}</td>
-                                        <td>{{$contact->phone_num}}</td>
-                                        <td>{{$contact->address}}</td>
+                                        <li>{{$contact->name}}</li>
+                                        <li>{{$contact->phone_num}}</li>
+                                        <li>{{$contact->address}}</li>
                                     @endforeach
                                 </td>
                                 <td>
-                                    <td>
-                                        @foreach ($order->products as $product)
-                                            {{$product->title}}
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach ($order->attribute_details as $detail)
-                                            <td>{{$detail->title}}|{{$detail->price}}</td>
-                                        @endforeach
-                                    </td>
+                                    <ul>
+                                        <li>
+                                            @foreach ($order->products as $product)
+                                                {{$product->title}}
+                                            @endforeach
+                                        </li>
+                                        <td>
+                                            @foreach ($order->attribute_details as $detail)
+                                                <li>{{$detail->title}}|{{$detail->price}}</li>
+                                            @endforeach
+                                        </td>
+                                    </ul>
                                 </td>
                                 <td>{{$order->quantity}}</td>
                                 <td>{{$order->total}}</td>

@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\model\products\Attribute;
 use App\model\products\Category;
-use App\model\products\Order;
 use App\model\products\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -20,8 +17,11 @@ class ProductController extends Controller
      */
     public function __construct()
     {
-        // $this->beforeFilter('cart', array('only' => array('ordersIndex')));
-        // ->only(array('index', 'list'));
+        //
+        if(Auth::check() === true)
+        {
+            $this->middleware('auth');
+        }
     }
 
     /**

@@ -14,8 +14,8 @@
                         <input type="text" class="form-control col-md-4" id="ctname" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="ctphone_num" class="control-label">联系号码</label>
-                        <input type="text" class="form-control col-md-4" id="ctphone_num" name="phone_num">
+                        <label for="ctphone" class="control-label">联系号码</label>
+                        <input type="text" class="form-control col-md-4" id="ctphone" name="phone">
                     </div>
                     <div class="form-group">
                         <label for="ctaddress" class="control-label">联系地址</label>

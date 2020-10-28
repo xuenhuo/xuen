@@ -37,7 +37,7 @@
                         <label for="odcontact" class="control-label">联系方式</label>
                         <input type="text" class="form-control" id="odcontact" name="contact">
                     </div>
-                    {{-- <input type="hidden" id="user_id" name="user_id" value="{{$atid}}"> --}}
+                    <input type="hidden" id="user_id" name="user_id">
                 </form>
             </div>
             <div class="modal-footer">

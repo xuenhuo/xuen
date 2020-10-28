@@ -4,7 +4,7 @@ namespace App\model\products;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Attribute_details extends Model
+class Attribute_detail extends Model
 {
     //
     protected $table = 'attribute_details';
@@ -14,7 +14,10 @@ class Attribute_details extends Model
     public function attributes() {
         return $this->belongsTo(Attribute::class);
     }
-    public function orders() {
-        return $this->belongsToMany(Order::class, 'orders_attribute_details', 'attribute_detail_id', 'order_id');
+    public function cart_details() {
+        return $this->hasMany(Cart_detail::class);
+    }
+    public function order_attribute_details() {
+        return $this->hasMany(Order_attribute_detail::class);
     }
 }

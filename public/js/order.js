@@ -40,18 +40,19 @@ $(document).ready(function () {
         $('#odid').val(odid);
         console.log(odurl+'/'+odid);
         $.get(odurl+'/'+odid, function (data) {
+            console.log(data);
             var order = data[0];
             var product = data[1];
             var details = data[2];
             var contact = data[3];
             $('#odnum').val(order.num);
-            $('#odproduct').val(product.title);
-            $('#oddetails').val(details.title);
+            $('#odproduct').val(product);
+            $('#oddetails').val(details);
             $('#odquantity').val(order.quantity);
             $('#odtotal').val(order.total);
             $('#odstatus').val(order.status);
-            $('#odcontact').val(contact.address);
-            // $('#user_id').val(order.user_id);
+            $('#odcontact').val(contact);
+            $('#user_id').val(order.user_id);
         });
 
         $('#orderModal').modal('show');
@@ -59,7 +60,7 @@ $(document).ready(function () {
 
     $('#odsave').click(function () {
         if($('#odsave').val() == 'add') {
-            ourl = odurl;
+            durl = odurl;
             var method = "POST"; // add
         }
         else {
@@ -75,7 +76,7 @@ $(document).ready(function () {
         data.append('product',$('#odproduct').val());
         data.append('details',$('#oddetails').val());
         data.append('contact',$('#odcontact').val());
-        // data.append('user_id',$('#user_id').val());
+        data.append('user_id',$('#user_id').val());
         data.append('_method', method);
         
 

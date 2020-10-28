@@ -47,7 +47,7 @@ $(document).ready(function () {
         $('#ctid').val(ctid);
         $.get(cturl+'/'+ctid, function (data) {
             $('#ctname').val(data.name);
-            $('#ctphone_num').val(data.phone_num);
+            $('#ctphone').val(data.phone);
             $('#ctaddress').val(data.address);
             $('#user_id').val(data.user_id);
         });
@@ -67,7 +67,7 @@ $(document).ready(function () {
 
         var data = new FormData();
         data.append('name', $('#ctname').val());
-        data.append('phone_num',$('#ctphone_num').val());
+        data.append('phone',$('#ctphone').val());
         data.append('address',$('#ctaddress').val());
         data.append('user_id',$('#user_id').val());
         data.append('_method', method);
@@ -89,7 +89,7 @@ $(document).ready(function () {
                 $('#contactModal').modal('hide');
                 var contact = '<tr id="contact' + data.id + '">' +
                     '<td>'+ escapeHtml(data.name) +'</td>' +
-                    '<td>'+ escapeHtml(data.phone_num) +'</td>' +
+                    '<td>'+ escapeHtml(data.phone) +'</td>' +
                     '<td>'+ escapeHtml(data.address) +'</td>' +
                     '<td><button class="btn btn-info ctedit" value="'+ data.id +'">编辑</button> <button class="btn btn-danger ctdelete" value="'+ data.id +'">删除</button>'+ '</td>' +
                     '<tr>';

@@ -43,14 +43,14 @@ class ContactController extends UserController
         //
         $request->validate([
             'name' => 'required|string',
-            'phone_num' => 'required|string',
+            'phone' => 'required|string',
             'address' => 'required',
             'user_id' => 'required|string',
         ]);
         $user_id = Auth::id();
         $contact = Contact::create([
             'name' => $request['name'],
-            'phone_num' => $request['phone_num'],
+            'phone' => $request['phone'],
             'address' => $request['address'],
             'user_id' => $user_id,
         ]);
@@ -94,12 +94,12 @@ class ContactController extends UserController
         $contact = Contact::find($id);
         $request->validate([
             'name' => 'sometimes|required|string',
-            'phone_num' => 'sometimes|required|string',
+            'phone' => 'sometimes|required|string',
             'address' => 'sometimes|required',
             'user_id' => 'sometimes|required|string',
         ]);
         $contact->name = $request->get('name');
-        $contact->phone_num = $request->get('phone_num');
+        $contact->phone = $request->get('phone');
         $contact->address = $request->get('address');
         $contact->user_id = $request->get('user_id');
         $contact->save();

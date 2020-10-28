@@ -59,7 +59,7 @@
                     @foreach($contacts as $contact)
                         <tr id="contact{{ $contact->id }}">
                             <td>{{$contact->name}}</td>
-                            <td>{{$contact->phone_num}}</td>
+                            <td>{{$contact->phone}}</td>
                             <td>{{$contact->address}}</td>
                             <td>
                                 <button class="btn btn-info ctedit" value="{{$contact->id}}">编辑</button>

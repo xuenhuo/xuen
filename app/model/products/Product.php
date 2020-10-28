@@ -10,7 +10,8 @@ class Product extends Model
     protected $table = 'products';
     protected $primaryKey = 'id';
     public $timestamp = true;
-    protected $fillable = ['title', 'price', 'sale', 'subtitle', 'description', 'additional_information', 'featured', 'position', 'photo'];
+    protected $fillable = ['title', 'price', 'sale', 'subtitle', 'description',
+                    'additional_information', 'featured', 'position', 'photo'];
     public function reviews() {
         return $this->hasMany(Review::class);
     }
@@ -20,8 +21,11 @@ class Product extends Model
     public function categories() {
         return $this->belongsToMany(Category::class, 'products_categories', 'product_id', 'category_id');
     }
-    public function orders() {
-        return $this->belongsToMany(Order::class, 'products_orders', 'product_id', 'order_id');
+    public function order_details() {
+        return $this->hasMany(Order_detail::class);
+    }
+    public function carts() {
+        return $this->hasMany(Cart::class);
     }
     public function delete(){
         $this->reviews()->delete();

@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
+use App\model\products\Cart;
 use App\model\products\Order;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\View;
 
 class CartServiceProvider extends ServiceProvider
 {
@@ -29,26 +29,22 @@ class CartServiceProvider extends ServiceProvider
         //
         view()->composer(['fashe.header'], function ($view) {
             $user_id = Auth::id();
-            $orders = Order::where('user_id', $user_id)->get();
-                $view->with('orders', $orders);
-            });
-        if(Auth::check() === true)
-        {
-            view()->composer(['fashe.header'], function ($view) {
-                $user_id = Auth::id();
-                $orders = Order::where('user_id', $user_id)->get();
-                $all_num = count($orders);
-                foreach($orders as $order){
-                    $od[] = $order->total;
-                }
-                $view->with('orders', $orders);
-                $view->with('all_num', $all_num);
-                // $view->with('orders', $orders);
-            });
-           
-            // $all_total = array_sum($od);
-            // View::share('orders', $orders);
-            // View::share('all_num', $all_num);
-        }
+            if($user_id == true) {
+                $carts = Cart::where('user_id', $user_id)->get();
+                $all_num = count($carts);
+                // foreach($carts as $cart){
+                //     $cart_price[] = $cart->price;
+                //     $detail_price[] = $cart->cart_details()->price;
+                // }
+                // $all_total = array_sum($all);
+            }else{
+                $carts = [];
+                $all_num = count($carts);
+                // $all_total = 0;
+            }
+            $view->with('carts', $carts);
+            $view->with('all_num', $all_num);
+            // $view->with('all_total', $all_total);
+        });
     }
 }

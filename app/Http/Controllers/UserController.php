@@ -18,14 +18,6 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $user_id = Auth::id();
-        $orders = Order::where('user_id', $user_id)->get();
-        $all_num = count($orders);
-        foreach($orders as $order){
-            $od[] = $order->total;
-        }
-        // $all_total = array_sum($od);
-        View::share('orders', 'all_num');
     }
 
     //用户中心
@@ -35,19 +27,4 @@ class UserController extends Controller
         $contact = Contact::all();
         return view('fashe.user', compact('user', 'contact'));
     }
-
-    // public function header()
-    // {
-    //     $orders = Order::all();
-    //     $all_num = count($orders);
-    //     foreach($orders as $order){
-    //         $od[] = $order->total;
-    //     }
-    //     $all_total = array_sum($od);
-    //     return view('fashe.header', [
-    //         'orders' => Order::all(),
-    //         'all_num' => $all_num,
-    //         'all_total' => $all_total,
-    //     ]);
-    // }
 }

@@ -2,6 +2,7 @@
 
 namespace App\model;
 
+use App\model\products\Cart;
 use App\model\products\Contact;
 use App\model\products\Order;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -47,6 +48,9 @@ class User extends Authenticatable
     }
     public function orders() {
         return $this->hasMany(Order::class);
+    }
+    public function cart() {
+        return $this->hasOne(Cart::class);
     }
     public function contacts() {
         return $this->hasMany(Contact::class);

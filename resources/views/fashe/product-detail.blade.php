@@ -93,7 +93,7 @@
 				</h4>
 
 				<span class="m-text17">
-					{{$product->price}}
+					${{$product->price}}
 				</span>
 
 				<p class="s-text8 p-t-10">
@@ -102,18 +102,19 @@
 
 				<!--  -->
 				<div class="p-t-33 p-b-60">
-					<form action="{{route('orders.store')}}" method="post">
-						{{-- <input type="hidden" name="_method" value="PATCH"> --}}
+					<form action="{{route('carts.store')}}" method="post">
 						@foreach ($product->attributes as $attribute)
 						<div class="flex-m flex-w p-b-10">
 							<div class="s-text15 w-size15 t-center">
 								{{$attribute->title}}
+								<input type="hidden" name="at_id" value="{{$attribute->id}}">
+								<input type="hidden" name="at_title" value="{{$attribute->title}}">
 							</div>
 
 							<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
-								<select class="selection-2" name="details[]">
+								<select class="selection-2" name="at_detail_id">
 									@foreach ($attribute->attribute_details as $detail)
-									<option value="{{$detail->id}}">{{$detail->title}}</option>
+									<option value="{{$detail->id}}">{{$detail->title}} ${{$detail->price}}</option>
 									@endforeach
 								</select>
 							</div>
@@ -134,22 +135,19 @@
 									</button>
 								</div>
 								
-								<input type="hidden" name="num" value="{{$num}}">
-								<input type="hidden" name="product" value="{{$product->title}}">
+								<input type="hidden" name="product_id" value="{{$product->id}}">
+								<input type="hidden" name="title" value="{{$product->title}}">
 								<input type="hidden" name="price" value="{{$product->price}}">
-								<input type="hidden" name="status" value="未付款">
+								<input type="hidden" name="photo" value="{{$product->photo}}">
 
 								<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
 									<!-- Button -->
 									@csrf
 									@method('POST')
 									<input type="submit" value="Add to Cart" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-										{{-- Add to Cart
-									</button> --}}
 								</div>
 							</div>
 						</div>
-						{{-- <input type="submit" value="提交" class="btn btn-primary btn-lg btn-block"/> --}}
 					</form>
 				</div>
 

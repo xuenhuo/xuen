@@ -2,6 +2,7 @@
 
 namespace App\model\products;
 
+use App\model\Contact;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -10,17 +11,15 @@ class Order extends Model
     protected $table = 'orders';
     protected $primaryKey = 'id';
     public $timestamp = true;
-    protected $fillable = ['num', 'user_id', 'status', 'quantity', 'total'];
+    protected $fillable = ['num', 'status', 'total', 'user_id', 'remark',
+                            'contact_id', 'name', 'phone', 'address'];
     public function user() {
         return $this->belongsTo(User::class);
     }
-    public function products() {
-        return $this->belongsToMany(Product::class, 'products_orders', 'order_id', 'product_id');
+    public function contact() {
+        return $this->belongsTo(Contact::class);
     }
-    public function attribute_details() {
-        return $this->belongsToMany(Attribute_details::class, 'orders_attribute_details', 'order_id', 'attribute_detail_id');
-    }
-    public function contacts() {
-        return $this->belongsToMany(Contact::class, 'orders_contacts', 'order_id', 'contact_id');
+    public function order_details() {
+        return $this->hasMany(Order_detail::class);
     }
 }
