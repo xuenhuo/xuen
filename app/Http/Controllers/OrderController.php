@@ -54,7 +54,7 @@ class OrderController extends UserController
         $d[] = $request['cart_id'];
         $m = count($d);
         for($i=1;$i<=$m;$i++){
-            $contact_id = $request['country'];
+            $contact_id = $request['contact'];
             $contact = Contact::find($contact_id);
             $cart = Cart::find($d[$i-1]);
             $total = $request['total'];

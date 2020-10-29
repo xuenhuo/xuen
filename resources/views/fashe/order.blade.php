@@ -45,102 +45,103 @@
 
 	<!-- Order -->
 	<section class="cart bgwhite p-t-70 p-b-100">
-		<div class="container">
-			<!-- Cart item -->
-			<div class="container-table-cart pos-relative">
-				<div class="wrap-table-shopping-cart bgwhite">
-					<table class="table-shopping-cart">
-						<tr class="table-head">
-							<th class="column-1"></th>
-							<th class="column-2">Product</th>
-							<th class="column-5">Price</th>
-							<th class="column-4 p-l-70">Quantity</th>
-							<th class="column-5">Total</th>
-						</tr>
+		<form action="{{route('orders.store')}}" method="POST">
+			<div class="container">
+				<!-- Cart item -->
+				<div class="container-table-cart pos-relative">
+					<div class="wrap-table-shopping-cart bgwhite">
+						<table class="table-shopping-cart">
+							<tr class="table-head">
+								<th class="column-1"></th>
+								<th class="column-2">Product</th>
+								<th class="column-5">Price</th>
+								<th class="column-4 p-l-70">Quantity</th>
+								<th class="column-5">Total</th>
+							</tr>
 
-						@foreach ($carts as $cart)
-						<?php $total = 0 ?>
-						<?php $all_total = 0 ?>
-						<tr class="table-row">
-							<td class="column-1">
-								<img src="/storage/products/{{$cart->photo}}" alt="IMG-PRODUCT">
-							</td>
-							<td class="column-2">
-								{{$cart->title}}
-								<?php $detail_total = 0 ?>
-								@foreach ($cart->cart_details as $detail)
-									<ul>
-										<li>{{$detail->subtitle}} ${{$detail->price}}</li>
-										<?php $detail_total += $detail->price ?>
-									</ul>
-								@endforeach
-							</td>
-							<td class="column-5">${{$cart->price}}</td>
-							<td class="column-4">
-								{{$cart->quantity}}
-							</td>
-							<?php $total = (($cart->price)+$detail_total)*($cart->quantity) ?>
-							<td class="column-5">${{$total}}</td>
-							<input type="hidden" name="total" value="{{$total}}">
-							<?php $all_total += $total ?> 
-						</tr>
-						@endforeach
-					</table>
-				</div>
-			</div>
-
-			<!-- Total -->
-			<div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
-				<h5 class="m-text20 p-b-24">
-					Cart Totals
-				</h5>
-
-				<!--  -->
-				<div class="flex-w flex-sb bo10 p-t-15 p-b-20">
-					<span class="s-text18 w-size19 w-full-sm">
-						Shipping:
-					</span>
-
-					<div class="w-size20 w-full-sm">
-						<p class="s-text8 p-b-23">
-							There are no shipping methods available. Please double check your address, or contact us if you need any help.
-						</p>
-
-						<span class="s-text19">
-							Calculate Shipping
-						</span>
-
-						<div class="rs2-select2 rs3-select2 rs4-select2 bo4 of-hidden w-size21 m-t-8 m-b-12">
-							<select class="selection-2" name="country">
-								@foreach ($contacts as $contact)
-									<option value="{{$contact->id}}">
-										{{$contact->address}}  {{$contact->name}}  {{$contact->phone}}
-									</option>
-								@endforeach
-							</select>
-						</div>
+							@foreach ($carts as $cart)
+							<?php $total = 0 ?>
+							<?php $all_total = 0 ?>
+							<tr class="table-row">
+								<td class="column-1">
+									<img src="/storage/products/{{$cart->photo}}" alt="IMG-PRODUCT">
+								</td>
+								<td class="column-2">
+									{{$cart->title}}
+									<?php $detail_total = 0 ?>
+									@foreach ($cart->cart_details as $detail)
+										<ul>
+											<li>{{$detail->subtitle}} ${{$detail->price}}</li>
+											<?php $detail_total += $detail->price ?>
+										</ul>
+									@endforeach
+								</td>
+								<td class="column-5">${{$cart->price}}</td>
+								<td class="column-4">
+									{{$cart->quantity}}
+								</td>
+								<?php $total = (($cart->price)+$detail_total)*($cart->quantity) ?>
+								<td class="column-5">${{$total}}</td>
+								{{-- <input type="hidden" name="total" value="{{$total}}"> --}}
+								<?php $all_total += $total ?> 
+							</tr>
+							@endforeach
+						</table>
 					</div>
 				</div>
 
-				<!--  -->
-				<div class="flex-w flex-sb-m p-t-26 p-b-30">
-					<span class="m-text22 w-size19 w-full-sm">
-						Total: 
-					</span>
+				<!-- Total -->
+				<div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+					<h5 class="m-text20 p-b-24">
+						Cart Totals
+					</h5>
 
-					<span class="m-text21 w-size20 w-full-sm">
-						${{$all_total}}
-					</span>
-				</div>
+					<!--  -->
+					<div class="flex-w flex-sb bo10 p-t-15 p-b-20">
+						<span class="s-text18 w-size19 w-full-sm">
+							Shipping:
+						</span>
 
-				<div class="size15 trans-0-4">
-					<!-- Button -->
-					<button type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Proceed to Checkout
-					</button>
+						<div class="w-size20 w-full-sm">
+							<div class="rs2-select2 rs3-select2 rs4-select2 bo4 of-hidden w-size21 m-t-8 m-b-12">
+								<select class="selection-2" name="contact">
+									@foreach ($contacts as $contact)
+										<option value="{{$contact->id}}">
+											{{$contact->address}}  {{$contact->name}}  {{$contact->phone}}
+										</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<!--  -->
+					<div class="flex-w flex-sb-m p-t-26 p-b-30">
+						<span class="m-text22 w-size19 w-full-sm">
+							Total: 
+						</span>
+
+						<span class="m-text21 w-size20 w-full-sm">
+							${{$all_total}}
+							<input type="hidden" name="total" value="{{$all_total}}">
+						</span>
+
+						<span class="m-text21 w-size20 w-full-sm">
+							<textarea type="text" name="remark">备注</textarea>
+						</span>
+					</div>
+
+					<input type="hidden" name="status" value="未付款">
+					<input type="hidden" name="num" value="{{$num}}">
+					<div class="size15 trans-0-4">
+						<!-- Button -->
+						<button type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+							Proceed to Checkout
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 	</section>
 
 	<!-- Footer -->
