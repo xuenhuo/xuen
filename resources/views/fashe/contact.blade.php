@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="/storage/images/icons/favicon.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -37,7 +37,7 @@
 	@include('fashe.header')
 
 	<!-- Title Page -->
-	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(/images/heading-pages-06.jpg);">
+	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(/storage/images/heading-pages-06.jpg);">
 		<h2 class="l-text2 t-center">
 			Contact
 		</h2>
@@ -49,7 +49,7 @@
 			<div class="row">
 				<div class="col-md-6 p-b-30">
 					<div class="p-r-20 p-r-0-lg">
-						<div class="contact-map size21" id="google_map" data-map-x="40.614439" data-map-y="-73.926781" data-pin="/images/icons/icon-position-map.png" data-scrollwhell="0" data-draggable="1"></div>
+						<div class="contact-map size21" id="google_map" data-map-x="40.614439" data-map-y="-73.926781" data-pin="/storage/images/icons/icon-position-map.png" data-scrollwhell="0" data-draggable="1"></div>
 					</div>
 				</div>
 
