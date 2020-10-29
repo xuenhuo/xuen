@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/storage/images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -66,21 +66,21 @@
 					<div class="wrap-slick3-dots"></div>
 
 					<div class="slick3">
-						<div class="item-slick3" data-thumb="/storage/images/thumb-item-01.jpg">
+						<div class="item-slick3" data-thumb="/images/thumb-item-01.jpg">
 							<div class="wrap-pic-w">
-								<img src="/storage/images/product-detail-01.jpg" alt="IMG-PRODUCT">
+								<img src="/images/product-detail-01.jpg" alt="IMG-PRODUCT">
 							</div>
 						</div>
 
-						<div class="item-slick3" data-thumb="/storage/images/thumb-item-02.jpg">
+						<div class="item-slick3" data-thumb="/images/thumb-item-02.jpg">
 							<div class="wrap-pic-w">
-								<img src="/storage/images/product-detail-02.jpg" alt="IMG-PRODUCT">
+								<img src="/images/product-detail-02.jpg" alt="IMG-PRODUCT">
 							</div>
 						</div>
 
-						<div class="item-slick3" data-thumb="/storage/images/thumb-item-03.jpg">
+						<div class="item-slick3" data-thumb="/images/thumb-item-03.jpg">
 							<div class="wrap-pic-w">
-								<img src="/storage/images/product-detail-03.jpg" alt="IMG-PRODUCT">
+								<img src="/images/product-detail-03.jpg" alt="IMG-PRODUCT">
 							</div>
 						</div>
 					</div>
@@ -221,7 +221,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								<img src="/storage/images/item-02.jpg" alt="IMG-PRODUCT">
+								<img src="/images/item-02.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -254,7 +254,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="/storage/images/item-03.jpg" alt="IMG-PRODUCT">
+								<img src="/images/item-03.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -287,7 +287,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="/storage/images/item-05.jpg" alt="IMG-PRODUCT">
+								<img src="/images/item-05.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -320,7 +320,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-								<img src="/storage/images/item-07.jpg" alt="IMG-PRODUCT">
+								<img src="/images/item-07.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -357,7 +357,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								<img src="/storage/images/item-02.jpg" alt="IMG-PRODUCT">
+								<img src="/images/item-02.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -390,7 +390,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="/storage/images/item-03.jpg" alt="IMG-PRODUCT">
+								<img src="/images/item-03.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -423,7 +423,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="/storage/images/item-05.jpg" alt="IMG-PRODUCT">
+								<img src="/images/item-05.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -456,7 +456,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-								<img src="/storage/images/item-07.jpg" alt="IMG-PRODUCT">
+								<img src="/images/item-07.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">

@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/storage/images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -37,7 +37,7 @@
 	@include('fashe.header')
 
 	<!-- Title Page -->
-	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(/storage/images/heading-pages-05.jpg);">
+	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(/images/heading-pages-05.jpg);">
 		<h2 class="l-text2 t-center">
 			Blog
 		</h2>

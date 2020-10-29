@@ -20,6 +20,8 @@ php artisan migrate  // 数据库迁移
 
 php artisan storage:link  // 创建storage与public的链接
 
+php artisan key:generate
+
 php artisan serve //启动服务器
 
 ## ROUTES

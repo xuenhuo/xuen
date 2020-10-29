@@ -79,7 +79,7 @@ Route::resource('contacts', 'ContactController')->only([
     'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
 ]);
 //前台主页
-Route::get('home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 //前台关于我们
 Route::get('about', 'HomeController@about')->name('about');
 //前台联系我们
