@@ -4,7 +4,7 @@
         <div class="wrap_header">
             <!-- Logo -->
             <a href="{{route('home')}}" class="logo">
-                <img src="/images/images/icons/logo.png" alt="IMG-LOGO">
+                <img src="/images/icons/logo.png" alt="IMG-LOGO">
             </a>
 
             <!-- Menu -->
@@ -39,7 +39,7 @@
             <!-- Header Icon -->
             <div class="header-icons dropdown">
                 <a href="#" class="header-wrapicon1 dis-block" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="/images/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+                    <img src="/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -64,7 +64,7 @@
                 <span class="linedivide1"></span>
 
                 <div class="header-wrapicon2">
-                    <img src="/images/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                    <img src="/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
                     <span class="header-icons-noti">{{$all_num}}</span>
 
                     <!-- Header cart noti -->
@@ -124,7 +124,7 @@
     <div class="wrap_header_mobile">
         <!-- Logo moblie -->
         <a href="{{route('home')}}" class="logo-mobile">
-            <img src="/images/images/icons/logo.png" alt="IMG-LOGO">
+            <img src="/images/icons/logo.png" alt="IMG-LOGO">
         </a>
 
         <!-- Button show menu -->
@@ -132,13 +132,13 @@
             <!-- Header Icon mobile -->
             <div class="header-icons-mobile">
                 <a href="#" class="header-wrapicon1 dis-block">
-                    <img src="/images/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+                    <img src="/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
                 </a>
 
                 <span class="linedivide2"></span>
 
                 <div class="header-wrapicon2">
-                    <img src="/images/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                    <img src="/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
                     <span class="header-icons-noti">{{$all_num}}</span>
 
                     <!-- Header cart noti -->
