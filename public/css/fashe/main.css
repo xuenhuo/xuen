@@ -2077,7 +2077,7 @@ li.sale-noti > a {
 }
 
 .table-shopping-cart .column-1 {
-  width: 225px;
+  /* width: 225px; */
   padding-left: 50px;
 }
 .table-shopping-cart .column-2 {

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\model\Contact;
+use App\model\products\Attribute;
 use App\model\products\Attribute_detail;
 use App\model\products\Cart;
 use App\model\products\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
@@ -21,6 +24,8 @@ class CartController extends Controller
         $user_id = Auth::id();
         return view('fashe.cart', [
             'carts' => Cart::where('user_id', $user_id)->get(),
+            // 'contact' => Contact::where('user_id', $user_id)->get()->pluck('id'),
+            // 'num' => Str::random(16),
         ]);
     }
 
@@ -44,39 +49,33 @@ class CartController extends Controller
     {
         //
         $price = $request->get('price');
-        // $quantity = $request->get('num-product');
-        // $sub_price[] = $request['at_detail_price'];
-        // $sub_total = array_sum($sub_price);
-        // $total = $price+$sub_total;
         $user_id = Auth::id();
         $cart = Cart::create([
             'user_id' => $user_id,
             'product_id' => $request['product_id'],
             'title' => $request['title'],
             'price' => $price,
-            'quantity' => $request['num_product'],
+            'quantity' => $request['quantity'],
             'photo' => $request['photo'],
         ]);
         //cart_detail
-        $c[] = $request['at_id'];
-        $n = count($c);
+        $at_id = $request['at_id'];
+        $at_detail_id = $request['at_detail_id'];
+        $n = count($at_id);
         for ($i=1;$i<=$n;$i++) {
-            $attribute_id[] = $request['at_id'];
-            $at_title[] = $request['at_title'];
-            $at_detail_id[] = $request['at_detail_id'];
-            $at_detail = Attribute_detail::find($at_detail_id[$i-1]);
-            $at_detail_title[] = $at_detail->get('title');
-            $at_detail_price[] = $at_detail->get('price');
+            $at_title = Attribute::whereId($at_id[$i-1])->pluck('title');
+            $at_detail_title = Attribute_detail::whereId($at_detail_id[$i-1])->pluck('title');
+            $at_detail_price = Attribute_detail::whereId($at_detail_id[$i-1])->pluck('price');
             $detail = $cart->cart_details()->create([
-                'attribute_id' => $attribute_id[$i-1],
+                'attribute_id' => $at_id[$i-1],
                 'attribute_detail_id' => $at_detail_id[$i-1],
-                'title' => $at_title[$i-1],
-                'subtitle' => $at_detail_title[$i-1],
-                'price' => $at_detail_price[$i-1],
+                'title' => $at_title[0],
+                'subtitle' => $at_detail_title[0],
+                'price' => $at_detail_price[0],
             ]);
         }
 
-        // return redirect()->route('');
+        return redirect()->route('carts.index');
     }
 
     /**

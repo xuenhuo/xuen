@@ -68,11 +68,9 @@
 								</td>
 								<td class="column-2">
 									{{$cart->title}}
-									<?php $detail_total = 0 ?>
 									@foreach ($cart->cart_details as $detail)
 										<ul>
-											<li>{{$detail->subtitle}} ${{$detail->price}}</li>
-											<?php $detail_total += $detail->price ?>
+											<li>{{$detail->subtitle}}</li>
 										</ul>
 									@endforeach
 								</td>
@@ -80,7 +78,7 @@
 								<td class="column-4">
 									{{$cart->quantity}}
 								</td>
-								<?php $total = (($cart->price)+$detail_total)*($cart->quantity) ?>
+								<?php $total = ($cart->price)*($cart->quantity) ?>
 								<td class="column-5">${{$total}}</td>
 								{{-- <input type="hidden" name="total" value="{{$total}}"> --}}
 								<?php $all_total += $total ?> 

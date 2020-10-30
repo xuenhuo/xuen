@@ -51,9 +51,9 @@
 				<div class="wrap-table-shopping-cart bgwhite">
 					<table class="table-shopping-cart">
 						<tr class="table-head">
-							<th class="column-5"></th>
 							<th class="column-1"></th>
-							<th class="column-2">Product</th>
+							<th class="column-5"></th>
+							<th class="column-5">Product</th>
 							<th class="column-5">Price</th>
 							<th class="column-5">Quantity</th>
 							<th class="column-5">Total</th>
@@ -61,9 +61,9 @@
 
 						@foreach ($carts as $cart)
 						<tr class="table-row">
-							<td><input name="cart_id" type="checkbox" value="{{$cart->id}}"></td>
-							<td class="column-1">
-								<form action="{{route('cart.destroy', $cart->id)}}" method="post">
+							<td class="column-1"><input name="cart_id[]" type="checkbox" value="{{$cart->id}}"></td>
+							<td class="column-5">
+								<form action="{{route('carts.destroy', $cart->id)}}" method="post">
 									@csrf
 									@method('DELETE')
 									<button type="submit">
@@ -73,7 +73,7 @@
 									</button>
 								</form>
 							</td>
-							<td class="column-2">
+							<td class="column-5">
 								{{$cart->title}}
 								<?php $detail_total = 0 ?>
 								@foreach ($cart->cart_details as $detail)
@@ -92,10 +92,15 @@
 				</div>
 			</div>
 
-			<div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+			{{-- <input type="hidden" name="contact_id" value="{{$contact->id}}">
+			<input type="hidden" name="status" value="未付款">
+			<input type="hidden" name="remark" value="无">
+			<input type="hidden" name="num" value="{{$num}}">
+			<input type="hidden" name="total" value="0"> --}}
+			<div class="flex-r flex-b-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
 				<div class="size10 trans-0-4 m-t-10 m-b-10">
 					<!-- Button -->
-					<button href="{{route('orders.store')}}" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+					<button type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
 						Create Order
 					</button>
 				</div>

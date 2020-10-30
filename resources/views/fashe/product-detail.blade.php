@@ -104,21 +104,20 @@
 				<div class="p-t-33 p-b-60">
 					<form action="{{route('carts.store')}}" method="post">
 						@foreach ($product->attributes as $attribute)
-						<div class="flex-m flex-w p-b-10">
-							<div class="s-text15 w-size15 t-center">
-								{{$attribute->title}}
-								<input type="hidden" name="at_id" value="{{$attribute->id}}">
-								<input type="hidden" name="at_title" value="{{$attribute->title}}">
-							</div>
+							<div class="flex-m flex-w p-b-10">
+								<div class="s-text15 w-size15 t-center">
+									{{$attribute->title}}
+									<input type="hidden" name="at_id[]" value="{{$attribute->id}}">
+								</div>
 
-							<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
-								<select class="selection-2" name="at_detail_id">
-									@foreach ($attribute->attribute_details as $detail)
-									<option value="{{$detail->id}}">{{$detail->title}} ${{$detail->price}}</option>
-									@endforeach
-								</select>
+								<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
+									<select class="selection-2" name="at_detail_id[]">
+										@foreach ($attribute->attribute_details as $detail)
+											<option value="{{$detail->id}}">{{$detail->title}} ${{$detail->price}}</option>
+										@endforeach
+									</select>
+								</div>
 							</div>
-						</div>
 						@endforeach
 					
 						<div class="flex-r-m flex-w p-t-10">
@@ -128,7 +127,7 @@
 										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
 									</button>
 
-									<input class="size8 m-text18 t-center num-product" type="number" name="num-product" value="1">
+									<input class="size8 m-text18 t-center num-product" type="number" name="quantity" value="1">
 
 									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
 										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>

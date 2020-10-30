@@ -51,41 +51,46 @@ class OrderController extends UserController
     public function store(Request $request)
     {
         //
-        $d[] = $request['cart_id'];
-        $m = count($d);
+        $cart_id = $request['cart_id'];
+        $contact_id = $request['contact'];
+        $total = $request['total'];
+        $m = count($cart_id);
         for($i=1;$i<=$m;$i++){
-            $contact_id = $request['contact'];
-            $contact = Contact::find($contact_id);
-            $cart = Cart::find($d[$i-1]);
-            $total = $request['total'];
-            $user_id = $cart->get()->pluck('user_id');
-            $product_id = $cart->get()->pluck('product_id');
-            $title = $cart->get()->pluck('title');
-            $price = $cart->get()->pluck('price');
-            $quantity = $cart->get()->pluck('quantity');
-            $at_id[] = $cart->cart_details()->get()->pluck('attribute_id');
-            $at_title[] = $cart->cart_details()->get()->pluck('title');
-            $at_detail_id[] = $cart->cart_details()->get()->pluck('attribute_detail_id');
-            $at_detail_title[] = $cart->cart_details()->get()->pluck('subtitle');
-            $at_detail_price[] = $cart->cart_details()->get()->pluck('price');
-            $c[] = count($at_id);
+            //order
+            $user_id = Contact::whereId($contact_id)->pluck('user_id');
+            $name = Contact::whereId($contact_id)->pluck('name');
+            $phone = Contact::whereId($contact_id)->pluck('phone');
+            $address = Contact::whereId($contact_id)->pluck('address');
             $order = Order::create([
                 'num' => $request['num'],
                 'status' => $request['status'],
-                'total' => $total,
-                'user_id' => $user_id,
+                'total' => $total[$i-1],
+                'user_id' => $user_id[0],
                 'contact_id' => $contact_id,
                 'remark' => $request['remark'],
-                'name' => $contact->get()->pluck('name'),
-                'phone' => $contact->get()->pluck('phone'),
-                'address' => $contact->get()->pluck('address'),
+                'name' => $name[0],
+                'phone' => $phone[0],
+                'address' => $address[0],
             ]);
+            //order_detail
+            $product_id = Cart::whereId($cart_id[$i-1])->pluck('product_id');
+            $title = Cart::whereId($cart_id[$i-1])->pluck('title');
+            $price = Cart::whereId($cart_id[$i-1])->pluck('price');
+            $quantity = Cart::whereId($cart_id[$i-1])->pluck('quantity');
             $detail = $order->create([
-                'product_id' => $product_id,
-                'title' => $title,
-                'price' => $price,
-                'quantity' => $quantity,
+                'product_id' => $product_id[0],
+                'title' => $title[0],
+                'price' => $price[0],
+                'quantity' => $quantity[0],
             ]);
+            //order_attribute_detail
+            $cart = Cart::whereId($cart_id[$i-1])->get();
+            $at_id = $cart->cart_details()->pluck('attribute_id');
+            $at_title = $cart->cart_details()->pluck('title');
+            $at_detail_id = $cart->cart_details()->pluck('attribute_detail_id');
+            $at_detail_title = $cart->cart_details()->pluck('subtitle');
+            $at_detail_price = $cart->cart_details()->pluck('price');
+            $c[] = count($at_id);
             for ($n=1;$n<=$c;$n++) {
                 $sub_detail = $detail->order_attribute_details()->create([
                     'attribute_id' => $at_id[$n-1],
