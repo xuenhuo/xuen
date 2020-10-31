@@ -19,16 +19,17 @@ class OrderController extends UserController
     public function index()
     {
         //
-        // $user_id = Auth::id();
+        $user_id = Auth::id();
         // $orders = Order::where('user_id', $user_id)->get();
         // foreach($orders as $order){
         //     $od[] = $order->total;
         // }
         // $all_total = array_sum($od);
-        // return view('fashe.order', [
-        //     'carts' => Cart::where('user_id', $user_id)->get(),
-        //     'contact' => Contact::where('user_id', $user_id)->get(),
-        // ]);
+        return view('fashe.order', [
+            'orders' => Order::where('user_id', $user_id)->get(),
+            'carts' => Cart::where('user_id', $user_id)->get(),
+            'contact' => Contact::where('user_id', $user_id)->get(),
+        ]);
     }
 
     /**
@@ -101,6 +102,8 @@ class OrderController extends UserController
                 ]);
             }
         }
+
+        return redirect()->route('orders.index');
         // $request->validate([
         //     'num' => 'required|string',
         //     'status' => 'required|string',
@@ -160,7 +163,6 @@ class OrderController extends UserController
         //     'price' => $request['at_detail_price'],
         // ]);
 
-        return redirect()->route('orders.store');
     }
 
     /**
@@ -172,8 +174,8 @@ class OrderController extends UserController
     public function show($id)
     {
         //
-        $order = Order::find($id);
-        return $order;
+        // $order = Order::find($id);
+        // return $order;
     }
 
     /**

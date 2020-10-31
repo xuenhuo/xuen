@@ -49,6 +49,7 @@
                             <a class="dropdown-item" href="{{route('register')}}">{{__('Register')}}</a>
                         @endif
                     @else
+                        <a class="dropdown-item" href="{{route('contacts.index')}}">Home</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -81,14 +82,20 @@
                                             </div>
                                         </button>
                                     </form>
-    
+
+                                    <?php $all_price = 0 ?>
+                                    <?php $detail_price = 0 ?>
+                                    @foreach ($cart->cart_details as $detail)
+                                        <?php $detail_price += $detail->price ?>
+                                    @endforeach
                                     <div class="header-cart-item-txt">
                                         <a href="{{route('products.show', $cart->product_id)}}" class="header-cart-item-name">
                                             {{$cart->title}}
                                         </a>
-    
+
+                                        <?php $all_price = $detail_price+($cart->price) ?>
                                         <span class="header-cart-item-info">
-                                            {{$cart->quantity}}x${{$cart->price}}
+                                            {{$cart->quantity}}x${{$all_price}}
                                         </span>
                                     </div>
                                 </li>

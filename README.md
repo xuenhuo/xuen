@@ -50,6 +50,3 @@ php artisan serve //启动服务器
     JS文件位于public/js里
 
 前台CSS以及JS文件均位于public里
-
-## TO DO
-fashe/index category&&fale 

@@ -92,11 +92,11 @@
 				</div>
 			</div>
 
-			{{-- <input type="hidden" name="contact_id" value="{{$contact->id}}">
+			<input type="hidden" name="contact_id" value="{{$contact->id}}">
 			<input type="hidden" name="status" value="未付款">
 			<input type="hidden" name="remark" value="无">
 			<input type="hidden" name="num" value="{{$num}}">
-			<input type="hidden" name="total" value="0"> --}}
+			<input type="hidden" name="total" value="0">
 			<div class="flex-r flex-b-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
 				<div class="size10 trans-0-4 m-t-10 m-b-10">
 					<!-- Button -->

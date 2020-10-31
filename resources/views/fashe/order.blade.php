@@ -125,16 +125,15 @@
 						</span>
 
 						<span class="m-text21 w-size20 w-full-sm">
-							<textarea type="text" name="remark">备注</textarea>
+							Remark:
 						</span>
+						<textarea type="text" name="remark">备注</textarea>
 					</div>
 
-					<input type="hidden" name="status" value="未付款">
-					<input type="hidden" name="num" value="{{$num}}">
 					<div class="size15 trans-0-4">
 						<!-- Button -->
 						<button type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-							Proceed to Checkout
+							Pay for order
 						</button>
 					</div>
 				</div>

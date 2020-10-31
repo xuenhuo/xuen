@@ -24,8 +24,8 @@ class CartController extends Controller
         $user_id = Auth::id();
         return view('fashe.cart', [
             'carts' => Cart::where('user_id', $user_id)->get(),
-            // 'contact' => Contact::where('user_id', $user_id)->get()->pluck('id'),
-            // 'num' => Str::random(16),
+            'contact' => Contact::where('user_id', $user_id)->first(),
+            'num' => Str::random(16),
         ]);
     }
 
@@ -75,7 +75,7 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect()->route('carts.index');
+        return redirect()->route('products.show');
     }
 
     /**
