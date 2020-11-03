@@ -138,9 +138,29 @@
         <div class="btn-show-menu">
             <!-- Header Icon mobile -->
             <div class="header-icons-mobile">
-                <a href="#" class="header-wrapicon1 dis-block">
+                <a href="#" class="header-wrapicon1 dis-block" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
                 </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    @guest
+                        <a class="dropdown-item" href="{{route('login')}}">{{__('Login')}}</a>
+                        @if (Route::has('register'))
+                            <a class="dropdown-item" href="{{route('register')}}">{{__('Register')}}</a>
+                        @endif
+                    @else
+                        <a class="dropdown-item" href="{{route('contacts.index')}}">Home</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    @endguest
+                </div>
 
                 <span class="linedivide2"></span>
 

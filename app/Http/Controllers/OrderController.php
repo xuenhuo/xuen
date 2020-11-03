@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\model\Contact;
 use App\model\products\Cart;
 use App\model\products\Order;
-use App\model\products\Order_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,11 +19,6 @@ class OrderController extends UserController
     {
         //
         $user_id = Auth::id();
-        // $orders = Order::where('user_id', $user_id)->get();
-        // foreach($orders as $order){
-        //     $od[] = $order->total;
-        // }
-        // $all_total = array_sum($od);
         return view('fashe.order', [
             'orders' => Order::where('user_id', $user_id)->get(),
             'carts' => Cart::where('user_id', $user_id)->get(),
@@ -174,8 +168,6 @@ class OrderController extends UserController
     public function show($id)
     {
         //
-        // $order = Order::find($id);
-        // return $order;
     }
 
     /**
@@ -210,8 +202,5 @@ class OrderController extends UserController
     public function destroy($id)
     {
         //
-        $order = Order::find($id);
-        $order->delete();
-        return redirect()->route('orders.index');
     }
 }

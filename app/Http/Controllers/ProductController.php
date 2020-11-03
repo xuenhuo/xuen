@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\model\products\Cart;
 use App\model\products\Category;
 use App\model\products\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -21,7 +21,17 @@ class ProductController extends Controller
         if(Auth::check() === true)
         {
             $this->middleware('auth');
+            $user_id = Auth::id();
+            $carts = Cart::where('user_id', $user_id)->get();
+            $all_num = count($carts);
+        }else{
+            $carts = [];
+            $all_num = 0;
         }
+        return view('fashe.blog', [
+            'carts' => $carts,
+            'all_num' => $all_num,
+        ]);
     }
 
     /**
@@ -33,8 +43,9 @@ class ProductController extends Controller
     {
         //
         $products = Product::paginate(12);
+        $product_count = count(Product::all());
         $categories = Category::paginate(5);
-        return view('fashe.product', compact('products', 'categories'));
+        return view('fashe.product', compact('products', 'product_count', 'categories'));
     }
 
     /**

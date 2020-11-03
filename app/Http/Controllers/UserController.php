@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\model\Contact;
-use App\model\products\Order;
+use App\model\products\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\View;
 
 class UserController extends Controller
 {
@@ -17,7 +16,20 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        if(Auth::check() === true)
+        {
+            $this->middleware('auth');
+            $user_id = Auth::id();
+            $carts = Cart::where('user_id', $user_id)->get();
+            $all_num = count($carts);
+        }else{
+            $carts = [];
+            $all_num = 0;
+        }
+        return view('fashe.blog', [
+            'carts' => $carts,
+            'all_num' => $all_num,
+        ]);
     }
 
     //用户中心

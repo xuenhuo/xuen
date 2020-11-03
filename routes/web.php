@@ -86,29 +86,29 @@ Route::get('about', 'HomeController@about')->name('about');
 Route::get('contact', 'HomeController@contact')->name('contact');
 //前台文章控制器
 Route::resource('articles', 'ArticleController')->only([
-    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+    'index', 'show'
 ]);
 //前台文章评论控制器
 Route::resource('articles.comments', 'CommentController')->only([
-    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+    'store', 'update', 'destroy'
 ]);
 //前台产品控制器
 Route::resource('products', 'ProductController')->only([
-    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+    'index', 'show'
 ]);
 //前台产品回复控制器
 Route::resource ('products.reviews', 'ReviewController')->only([
-    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+    'store', 'update', 'destroy'
 ]);
 //前台分类控制器
 Route::resource ('categories', 'CategoryController')->only([
-    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+    'index', 'show'
 ]);
 //前台订单控制器
 Route::resource ('orders', 'OrderController')->only([
-    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+    'index', 'create', 'store'
 ]);
 //前台购物车控制器
 Route::resource ('carts', 'CartController')->only([
-    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+    'index', 'create', 'store', 'destroy'
 ]);

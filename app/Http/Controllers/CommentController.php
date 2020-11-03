@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\model\articles\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 class CommentController extends UserController
 {
@@ -27,7 +26,6 @@ class CommentController extends UserController
     public function create($article_id)
     {
         //
-        return view('blog-detail');
     }
 
     /**
@@ -50,7 +48,7 @@ class CommentController extends UserController
             'user_id' => $user_id,
             'article_id' => $article_id,
         ]);
-        return Redirect::to('articles.comments.create');
+        return redirect()->route('articles.show', ['id' => $article_id]);
     }
 
     /**
@@ -73,7 +71,6 @@ class CommentController extends UserController
     public function edit($id)
     {
         //
-        return view('blog-detail');
     }
 
     /**
@@ -95,7 +92,7 @@ class CommentController extends UserController
         $comment->content = $request->get('content');
         $comment->user_id = $user_id;
         $comment->article_id = $article_id;
-        return Redirect::to('articles.comments.edit');
+        return redirect()->route('articles.show', ['id' => $article_id]);
     }
 
     /**
@@ -104,8 +101,10 @@ class CommentController extends UserController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($article_id, Comment $comment)
     {
         //
+        $comment->delete();
+        return redirect()->route('articles.show', ['id' => $article_id]);
     }
 }

@@ -50,6 +50,7 @@
 				<div class="col-md-8 col-lg-9 p-b-75">
 					<div class="p-r-50 p-r-0-lg">
 						<!-- item blog -->
+						<?php $con = 0 ?>
 						@foreach ($articles as $article)
 						<div class="item-blog p-b-80">
 							<a href="{{route('articles.show', $article->id)}}" class="item-blog-img pos-relative dis-block hov-img-zoom">
@@ -86,7 +87,8 @@
 								</div>
 
 								<p class="p-b-12">
-									{{$article->content}}
+									<?php $con = mb_substr($article->content, 0, 50) ?>
+									{{$con}}...
 								</p>
 
 								<a href="{{route('articles.show', $article->id)}}" class="s-text20">
@@ -99,9 +101,8 @@
 					</div>
 
 					<!-- Pagination -->
-					<div class="pagination flex-m flex-w p-r-50">
-						<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-						<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
+					<div class="pagination flex-m flex-w p-t-26">
+						{{$articles->links('vendor.pagination.bootstrap-4')}}
 					</div>
 				</div>
 

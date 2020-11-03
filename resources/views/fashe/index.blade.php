@@ -179,10 +179,10 @@
 					<div class="item-slick2 p-l-15 p-r-15">
 						<!-- Block2 -->
 						<div class="block2">
-							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+							<div class="block2-img wrap-pic-w pos-relative">
 								<img src="/storage/products/{{$product->photo}}" alt="IMG-PRODUCT">
 
-								<div class="block2-overlay trans-0-4">
+								{{-- <div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
 										<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
 										<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
@@ -194,7 +194,7 @@
 											Add to Cart
 										</button>
 									</div>
-								</div>
+								</div> --}}
 							</div>
 
 							<div class="block2-txt p-t-20">
@@ -320,7 +320,7 @@
 				<div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
 					<!-- Block3 -->
 					<div class="block3">
-						<a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
+						<a href="{{route('articles.show', $article->id)}}" class="block3-img dis-block hov-img-zoom">
 							<img src="/images/blog-03.jpg" alt="IMG-BLOG">
 						</a>
 
@@ -335,7 +335,7 @@
 							<span class="s-text6">on</span> <span class="s-text7">{{$article->created_at}}</span>
 
 							<p class="s-text8 p-t-16">
-								{{$article->content}}
+								{{$contents[($article->id)-1]}}
 							</p>
 						</div>
 					</div>

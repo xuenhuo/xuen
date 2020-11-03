@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\model\products\Cart;
 use App\model\articles\Article;
-use App\model\articles\Comment;
 use App\model\articles\Tag;
 use App\model\products\Category;
-use App\model\products\Order;
 use App\model\products\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -24,18 +24,16 @@ class ArticleController extends Controller
         {
             $this->middleware('auth');
             $user_id = Auth::id();
-            $orders = Order::where('user_id', $user_id)->get();
-            $all_num = count($orders);
-            foreach($orders as $order){
-                $od[] = $order->total;
-            }
-            $all_total = array_sum($od);
-            return view('fashe.header', [
-                'orders' => Order::all(),
-                'all_num' => $all_num,
-                'all_total' => $all_total,
-            ]);
+            $carts = Cart::where('user_id', $user_id)->get();
+            $all_num = count($carts);
+        }else{
+            $carts = [];
+            $all_num = 0;
         }
+        return view('fashe.blog', [
+            'carts' => $carts,
+            'all_num' => $all_num,
+        ]);
     }
 
     /**
@@ -47,7 +45,7 @@ class ArticleController extends Controller
     {
         //
         $articles = Article::paginate(5);
-        $articles = Article::withCount('comments')->get();
+        $articles = Article::withCount('comments')->paginate(5);
         $products = Product::where('featured', 1)->paginate(5);
         $categories = Category::paginate(5);
         $tags = Tag::all();

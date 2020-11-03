@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\model\products\Category;
-use App\model\products\Order;
+use App\model\products\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,18 +20,16 @@ class CategoryController extends Controller
         {
             $this->middleware('auth');
             $user_id = Auth::id();
-            $orders = Order::where('user_id', $user_id)->get();
-            $all_num = count($orders);
-            foreach($orders as $order){
-                $od[] = $order->total;
-            }
-            $all_total = array_sum($od);
-            return view('fashe.header', [
-                'orders' => Order::all(),
-                'all_num' => $all_num,
-                'all_total' => $all_total,
-            ]);
+            $carts = Cart::where('user_id', $user_id)->get();
+            $all_num = count($carts);
+        }else{
+            $carts = [];
+            $all_num = 0;
         }
+        return view('fashe.blog', [
+            'carts' => $carts,
+            'all_num' => $all_num,
+        ]);
     }
 
     /**

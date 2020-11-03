@@ -61,15 +61,15 @@
 
 						<ul class="p-b-54">
 							@foreach ($categories as $category)
-							<li class="p-t-4">
-								<a href="#" class="s-text13 active1">
-									{{$category->title}}
-								</a>
-							</li>
+								<li class="p-t-4">
+									<a href="{{route('categories.show', $category->id)}}" class="s-text13 active1">
+										{{$category->title}}
+									</a>
+								</li>
 							@endforeach
 						</ul>
 
-						<!--  -->
+						{{-- <!--  -->
 						<h4 class="m-text14 p-b-32">
 							Filters
 						</h4>
@@ -92,7 +92,7 @@
 								</div>
 
 								<div class="s-text3 p-t-10 p-b-10">
-									Range: $<span id="value-lower">610</span> - $<span id="value-upper">980</span>
+									Range: $<span id="value-lower"></span> - $<span id="value-upper">980</span>
 								</div>
 							</div>
 						</div>
@@ -146,7 +146,7 @@
 							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
 								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
 							</button>
-						</div>
+						</div> --}}
 					</div>
 				</div>
 
@@ -156,14 +156,13 @@
 						<div class="flex-w">
 							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
 								<select class="selection-2" name="sorting">
-									<option>Default Sorting</option>
-									<option>Popularity</option>
-									<option>Price: low to high</option>
-									<option>Price: high to low</option>
+									<option value="0">Default Sorting</option>
+									<option value="1">Price: low to high</option>
+									<option value="2">Price: high to low</option>
 								</select>
 							</div>
 
-							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+							{{-- <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
 								<select class="selection-2" name="sorting">
 									<option>Price</option>
 									<option>$0.00 - $50.00</option>
@@ -173,11 +172,11 @@
 									<option>$200.00+</option>
 
 								</select>
-							</div>
+							</div> --}}
 						</div>
 
 						<span class="s-text8 p-t-5 p-b-5">
-							Showing 1–12 of 16 results
+							{{$product_count}} results
 						</span>
 					</div>
 
@@ -187,10 +186,10 @@
 						<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 							<!-- Block2 -->
 							<div class="block2">
-								<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+								<div class="block2-img wrap-pic-w pos-relative">
 									<img src="/storage/products/{{$product->photo}}" alt="IMG-PRODUCT">
 
-									<div class="block2-overlay trans-0-4">
+									{{-- <div class="block2-overlay trans-0-4">
 										<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
 											<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
 											<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
@@ -202,7 +201,7 @@
 												Add to Cart
 											</button>
 										</div>
-									</div>
+									</div> --}}
 								</div>
 
 								<div class="block2-txt p-t-20">
@@ -221,8 +220,7 @@
 
 					<!-- Pagination -->
 					<div class="pagination flex-m flex-w p-t-26">
-						<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-						<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
+						{{$products->links('vendor.pagination.bootstrap-4')}}
 					</div>
 				</div>
 			</div>

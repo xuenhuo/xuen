@@ -6,7 +6,6 @@ use App\model\products\Product;
 use App\model\products\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 class ReviewController extends UserController
 {
@@ -50,7 +49,7 @@ class ReviewController extends UserController
             'user_id' => $user_id,
             'product_id' => $product_id,
         ]);
-        return Redirect::to('products.reviews.create');
+        return redirect()->route('products.show', ['id' => $product_id]);
     }
 
     /**
@@ -94,7 +93,7 @@ class ReviewController extends UserController
         $review->content = $request->get('content');
         $review->user_id = $user_id;
         $review->product_id = $product_id;
-        return Redirect::to('products.reviews.edit');
+        return redirect()->route('products.show', ['id' => $product_id]);
     }
 
     /**
@@ -103,8 +102,10 @@ class ReviewController extends UserController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($product_id, Review $review)
     {
         //
+        $review->delete();
+        return redirect()->route('products.show', ['id' => $product_id]);
     }
 }
