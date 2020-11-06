@@ -7,6 +7,7 @@ use App\model\products\Category;
 use App\model\products\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -44,13 +45,16 @@ class ProductController extends Controller
         //
         $n = $request['sorting'];
         switch($n){
+            case 0 :
+                $products = DB::table('products')->latest()->paginate(12);
+            break;
             case 1 :
-                $product = Product::paginate(12);
+                $products = DB::table('products')->orderBy('price')->paginate(12);
             break;
             case 2 :
-                $product = Product::where();
+                $products = DB::table('products')->orderBy('price', 'desc')->paginate(12);
+            break;
         }
-        $products = Product::paginate(12);
         $product_count = count(Product::all());
         $categories = Category::paginate(5);
         return view('fashe.product', compact('products', 'product_count', 'categories'));
