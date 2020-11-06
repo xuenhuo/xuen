@@ -39,9 +39,17 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $n = $request['sorting'];
+        switch($n){
+            case 1 :
+                $product = Product::paginate(12);
+            break;
+            case 2 :
+                $product = Product::where();
+        }
         $products = Product::paginate(12);
         $product_count = count(Product::all());
         $categories = Category::paginate(5);

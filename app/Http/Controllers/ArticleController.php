@@ -9,6 +9,7 @@ use App\model\products\Category;
 use App\model\products\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ArticleController extends Controller
@@ -44,8 +45,8 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        $articles = Article::paginate(5);
-        $articles = Article::withCount('comments')->paginate(5);
+        $articles = DB::table('articles')->latest()->paginate(5);
+        $articles = Article::withCount('comments')->latest()->paginate(5);
         $products = Product::where('featured', 1)->paginate(5);
         $categories = Category::paginate(5);
         $tags = Tag::all();

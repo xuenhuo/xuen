@@ -71,6 +71,7 @@
                     <!-- Header cart noti -->
                     <div class="header-cart header-dropdown">
                         <ul class="header-cart-wrapitem">
+                            <?php $all = 0 ?>
                             @foreach ($carts as $cart)
                                 <li class="header-cart-item">
                                     <form action="{{route('carts.destroy', $cart->id)}}" method="post">
@@ -96,15 +97,16 @@
                                         <?php $all_price = $detail_price+($cart->price) ?>
                                         <span class="header-cart-item-info">
                                             {{$cart->quantity}}x${{$all_price}}
+                                            <?php $all += $all_price ?>
                                         </span>
                                     </div>
                                 </li>
                             @endforeach
                         </ul>
 
-                        {{-- <div class="header-cart-total">
-                            Total: ${{$all_total}}
-                        </div> --}}
+                        <div class="header-cart-total">
+                            Total: ${{$all}}
+                        </div>
 
                         <div class="header-cart-buttons">
                             <div class="header-cart-wrapbtn">

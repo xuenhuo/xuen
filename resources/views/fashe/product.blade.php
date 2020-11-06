@@ -152,33 +152,38 @@
 
 				<div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
 					<!--  -->
-					<div class="flex-sb-m flex-w p-b-35">
-						<div class="flex-w">
-							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2" name="sorting">
-									<option value="0">Default Sorting</option>
-									<option value="1">Price: low to high</option>
-									<option value="2">Price: high to low</option>
-								</select>
+					<form action="{{route('products.index')}}">
+						<div class="flex-sb-m flex-w p-b-35">
+							<div class="flex-w">
+								<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+									<select class="selection-2" name="sorting">
+										<option value="0">Default Sorting</option>
+										<option value="1">Price: low to high</option>
+										<option value="2">Price: high to low</option>
+									</select>
+								</div>
+
+								{{-- <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+									<select class="selection-2" name="sorting">
+										<option>Price</option>
+										<option>$0.00 - $50.00</option>
+										<option>$50.00 - $100.00</option>
+										<option>$100.00 - $150.00</option>
+										<option>$150.00 - $200.00</option>
+										<option>$200.00+</option>
+
+									</select>
+								</div> --}}
+								<div>
+									<input type="submit">
+								</div>
 							</div>
 
-							{{-- <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2" name="sorting">
-									<option>Price</option>
-									<option>$0.00 - $50.00</option>
-									<option>$50.00 - $100.00</option>
-									<option>$100.00 - $150.00</option>
-									<option>$150.00 - $200.00</option>
-									<option>$200.00+</option>
-
-								</select>
-							</div> --}}
+							<span class="s-text8 p-t-5 p-b-5">
+								{{$product_count}} results
+							</span>
 						</div>
-
-						<span class="s-text8 p-t-5 p-b-5">
-							{{$product_count}} results
-						</span>
-					</div>
+					</form>
 
 					<!-- Product -->
 					<div class="row">
