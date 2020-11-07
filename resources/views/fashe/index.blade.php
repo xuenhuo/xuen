@@ -335,7 +335,8 @@
 							<span class="s-text6">on</span> <span class="s-text7">{{$article->created_at}}</span>
 
 							<p class="s-text8 p-t-16">
-								{{$contents[($article->id)-1]}}
+								<?php $con = mb_substr($article->content, 0, 50) ?>
+								{{$con}}...
 							</p>
 						</div>
 					</div>

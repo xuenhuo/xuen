@@ -51,12 +51,8 @@ class HomeController extends Controller
         $products = Product::where('featured', 1)->paginate(8);
         // $sale = Product::where('sale', '<', 'price')->get();
         $articles = Article::paginate(3);
-        foreach($articles as $article)
-        {
-            $contents[] = Str::limit($article->content, $limit = 40, $end = '...');
-        }
         return view('fashe.index', compact('ads', 'dresses', 'sunglasses', 'watches', 'footerwear',
-                    'bags', 'products', 'articles', 'contents'));
+                    'bags', 'products', 'articles'));
     }
 
     //联系我们
