@@ -47,6 +47,7 @@ class ArticleController extends Controller
         //
         $articles = DB::table('articles')->latest()->paginate(5);
         $articles = Article::withCount('comments')->latest()->paginate(5);
+        // dd($articles);
         $products = Product::where('featured', 1)->paginate(5);
         $categories = Category::paginate(5);
         $tags = Tag::all();

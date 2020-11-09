@@ -321,7 +321,7 @@
 					<!-- Block3 -->
 					<div class="block3">
 						<a href="{{route('articles.show', $article->id)}}" class="block3-img dis-block hov-img-zoom">
-							<img src="/storage/articles/{{$article->phote}}" alt="IMG-BLOG">
+							<img src="/storage/articles/{{$article->photo}}" alt="IMG-BLOG">
 						</a>
 
 						<div class="block3-txt p-t-14">
@@ -335,7 +335,7 @@
 							<span class="s-text6">on</span> <span class="s-text7">{{$article->created_at}}</span>
 
 							<p class="s-text8 p-t-16">
-								<?php $con = mb_substr($article->content, 0, 50) ?>
+								<?php $con = mb_substr($article->content, 0, 30) ?>
 								{{$con}}...
 							</p>
 						</div>
