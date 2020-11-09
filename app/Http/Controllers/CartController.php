@@ -75,7 +75,7 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect()->route('products.show');
+        return redirect()->route('products.index');
     }
 
     /**
