@@ -321,7 +321,7 @@
 					<!-- Block3 -->
 					<div class="block3">
 						<a href="{{route('articles.show', $article->id)}}" class="block3-img dis-block hov-img-zoom">
-							<img src="/images/blog-03.jpg" alt="IMG-BLOG">
+							<img src="/storage/articles/{{$article->phote}}" alt="IMG-BLOG">
 						</a>
 
 						<div class="block3-txt p-t-14">

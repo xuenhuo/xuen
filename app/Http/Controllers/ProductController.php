@@ -93,8 +93,8 @@ class ProductController extends Controller
         $product = Product::find($id);
         $reviews = $product->reviews()->get();
         $reviews_count = $product->reviews()->count();
-        $feature = Product::where('featured', 1)->paginate(8);
-        return view('fashe.product-detail', compact('product', 'reviews', 'reviews_count', 'feature'));
+        $features = Product::where('featured', 1)->paginate(8);
+        return view('fashe.product-detail', compact('product', 'reviews', 'reviews_count', 'features'));
     }
 
     /**

@@ -203,7 +203,7 @@
 		</div>
 	</div>
 
-	<!-- Relate Product -->
+	{{-- <!-- Relate Product -->
 	<section class="relateproduct bgwhite p-t-45 p-b-138">
 		<div class="container">
 			<div class="sec-title p-b-60">
@@ -217,6 +217,7 @@
 				<div class="slick2">
 					<div class="item-slick2 p-l-15 p-r-15">
 						<!-- Block2 -->
+						@foreach ($features as $feature)
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
 								<img src="/images/item-02.jpg" alt="IMG-PRODUCT">
@@ -246,12 +247,12 @@
 								</span>
 							</div>
 						</div>
+						@endforeach
 					</div>
 				</div>
 			</div>
-
 		</div>
-	</section>
+	</section> --}}
 
 	<!-- Footer -->
 	@include('fashe.footer')

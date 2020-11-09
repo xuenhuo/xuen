@@ -74,7 +74,7 @@ class CategoryController extends Controller
         //
         $categories = Category::paginate(5);
         $category = Category::find($id);
-        $products = $category->products()->get();
+        $products = $category->products()->paginate(12);
         return view('fashe.category', compact('categories', 'products'));
     }
 

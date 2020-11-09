@@ -17,12 +17,12 @@
                         <li>
                             <a href="{{route('products.index')}}">Shop</a>
                         </li>
-                        <li class="sale-noti">
+                        {{-- <li class="sale-noti">
                             <a href="{{route('products.index')}}">Sale</a>
                         </li>
                         <li>
                             <a href="{{route('products.index')}}">Features</a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{route('articles.index')}}">Blog</a>
                         </li>
