@@ -4,6 +4,7 @@
 	<title>Contact</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
 <!--===============================================================================================-->
@@ -29,6 +30,8 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/css/fashe/util.css">
 	<link rel="stylesheet" type="text/css" href="/css/fashe/main.css">
+
+	<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=rt2N3S1mRIQ6EaIVbQjALDEA1GgF7WrG"></script>
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -49,7 +52,7 @@
 			<div class="row">
 				<div class="col-md-6 p-b-30">
 					<div class="p-r-20 p-r-0-lg">
-						<div class="contact-map size21" id="google_map" data-map-x="40.614439" data-map-y="-73.926781" data-pin="/images/icons/icon-position-map.png" data-scrollwhell="0" data-draggable="1"></div>
+						<div class="contact-map size21" id="baidu_map"></div>
 					</div>
 				</div>
 
@@ -119,11 +122,16 @@
 			dropdownParent: $('#dropDownSelect2')
 		});
 	</script>
-<!--===============================================================================================-->
+{{-- <!--===============================================================================================-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
-	<script src="/js/fashe/map-custom.js"></script>
+	<script src="/js/fashe/map-custom.js"></script> --}}
 <!--===============================================================================================-->
 	<script src="/js/fashe/main.js"></script>
+	<script type="text/javascript">
+		var map = new BMapGL.Map('#baidu_map');
+		var point = new BMapGL.Point(116.708463,23.37102);
+		map.centerAndZoom(point, 15);
+	</script>
 
 </body>
 </html>
