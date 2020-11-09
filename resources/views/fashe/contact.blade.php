@@ -4,7 +4,7 @@
 	<title>Contact</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
 <!--===============================================================================================-->
@@ -31,7 +31,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/fashe/util.css">
 	<link rel="stylesheet" type="text/css" href="/css/fashe/main.css">
 
-	<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=rt2N3S1mRIQ6EaIVbQjALDEA1GgF7WrG"></script>
+	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=c6edeb8d6968f3ba51a9c1ff37e49879"></script> 
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -128,9 +128,11 @@
 <!--===============================================================================================-->
 	<script src="/js/fashe/main.js"></script>
 	<script type="text/javascript">
-		var map = new BMapGL.Map('container');
-		var point = new BMapGL.Point(116.708463,23.37102);
-		map.centerAndZoom(point, 15);
+		var map = new AMap.Map('container', {
+			zoom:11,//级别
+			center: [116.708463,23.37102],//中心点坐标
+			viewMode:'3D'//使用3D视图
+		});
 	</script>
 
 </body>
