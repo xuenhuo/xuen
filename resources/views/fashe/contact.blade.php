@@ -32,6 +32,9 @@
 	<link rel="stylesheet" type="text/css" href="/css/fashe/main.css">
 
 	<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=rt2N3S1mRIQ6EaIVbQjALDEA1GgF7WrG"></script>
+	<style type="text/css">
+		body{width: 550px; height: 503px; margin: 0px; padding: 0px;}
+	</style>
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -52,7 +55,7 @@
 			<div class="row">
 				<div class="col-md-6 p-b-30">
 					<div class="p-r-20 p-r-0-lg">
-						<div class="contact-map size21" id="baidu_map"></div>
+						<div class="contact-map" id="baidu_map"></div>
 					</div>
 				</div>
 
