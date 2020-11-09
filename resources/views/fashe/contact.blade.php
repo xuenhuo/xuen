@@ -52,7 +52,7 @@
 			<div class="row">
 				<div class="col-md-6 p-b-30">
 					<div class="p-r-20 p-r-0-lg">
-						<div class="contact-map size21" id="baidu_map"></div>
+						<div class="contact-map size21" id="container"></div>
 					</div>
 				</div>
 
@@ -128,7 +128,7 @@
 <!--===============================================================================================-->
 	<script src="/js/fashe/main.js"></script>
 	<script type="text/javascript">
-		var map = new BMapGL.Map('#baidu_map');
+		var map = new BMapGL.Map('container');
 		var point = new BMapGL.Point(116.708463,23.37102);
 		map.centerAndZoom(point, 15);
 	</script>
