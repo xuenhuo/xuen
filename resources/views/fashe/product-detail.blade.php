@@ -66,12 +66,12 @@
 					<div class="wrap-slick3-dots"></div>
 
 					<div class="slick3">
-						<div class="item-slick3" data-thumb="/images/thumb-item-01.jpg">
+						<div class="item-slick3" data-thumb="/storage/products/{{$product->photo}}">
 							<div class="wrap-pic-w">
-								<img src="/images/product-detail-01.jpg" alt="IMG-PRODUCT">
+								<img src="/storage/products/{{$product->photo}}" alt="IMG-PRODUCT">
 							</div>
 						</div>
-
+{{-- 
 						<div class="item-slick3" data-thumb="/images/thumb-item-02.jpg">
 							<div class="wrap-pic-w">
 								<img src="/images/product-detail-02.jpg" alt="IMG-PRODUCT">
@@ -82,7 +82,7 @@
 							<div class="wrap-pic-w">
 								<img src="/images/product-detail-03.jpg" alt="IMG-PRODUCT">
 							</div>
-						</div>
+						</div> --}}
 					</div>
 				</div>
 			</div>
