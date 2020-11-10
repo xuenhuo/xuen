@@ -8,21 +8,27 @@
 </p>
 
 ## HOW TO RUN
-git pull origin master
+git pull origin master/git clone ssh
+
+//需要手动创建MySQL utf8mb4_unicode_ci数据库
 
 cp .env.example .env
 
-composer install  // 安装依赖
+//修改.env里面的数据库信息
 
-//需要先创建数据库
+composer install  // 安装依赖
 
 php artisan migrate  // 数据库迁移
 
 php artisan storage:link  // 创建storage与public的链接
 
-php artisan key:generate
+php artisan key:generate  //生成应用的key
 
 php artisan serve //启动服务器
+
+php artisan tinker //进入应用交互模式后使用model create语句注册管理员
+
+Admin::create(['name'=>'your_name','email'=>'your_email','password'=>Hash::make('your_password')])
 
 ## ROUTES
 位于routes里，只用web.php及api.php
@@ -32,7 +38,11 @@ php artisan serve //启动服务器
 
 前台视图文件在fashe文件夹里面，包括主页，产品页，博客页，关于页，联系页，以及购物车页面等
 
+主页主要包括主页滚动广告，产品推荐，博客推荐等信息；产品页主要为产品信息；博客页是文章由管理员编写，用户主要为评论者；购物车页面由导航条右上角进入；以及其他信息页面。
+
 后台视图文件在admin文件夹里面，包括产品页，主页广告，文章（博客），管理员，登录页面，主页文件在layouts文件里的admin
+
+后台表单页面使用Javascript+Ajax直接创建新数据，不需要进行页面的跳转。
 
 ## CONTROLLER
 分为前后台控制器
