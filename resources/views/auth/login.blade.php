@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if (session()->get('error'))
+                <div class="d-flex justify-content-center alert alert-danger">
+                    {{session()->get('error')}}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 

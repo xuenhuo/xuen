@@ -48,34 +48,40 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
-        $price = $request->get('price');
-        $user_id = Auth::id();
-        $cart = Cart::create([
-            'user_id' => $user_id,
-            'product_id' => $request['product_id'],
-            'title' => $request['title'],
-            'price' => $price,
-            'quantity' => $request['quantity'],
-            'photo' => $request['photo'],
-        ]);
-        //cart_detail
-        $at_id = $request['at_id'];
-        $at_detail_id = $request['at_detail_id'];
-        $n = count($at_id);
-        for ($i=1;$i<=$n;$i++) {
-            $at_title = Attribute::whereId($at_id[$i-1])->pluck('title');
-            $at_detail_title = Attribute_detail::whereId($at_detail_id[$i-1])->pluck('title');
-            $at_detail_price = Attribute_detail::whereId($at_detail_id[$i-1])->pluck('price');
-            $detail = $cart->cart_details()->create([
-                'attribute_id' => $at_id[$i-1],
-                'attribute_detail_id' => $at_detail_id[$i-1],
-                'title' => $at_title[0],
-                'subtitle' => $at_detail_title[0],
-                'price' => $at_detail_price[0],
+        if (Auth::check())
+        {
+            $price = $request->get('price');
+            $user_id = Auth::id();
+            $cart = Cart::create([
+                'user_id' => $user_id,
+                'product_id' => $request['product_id'],
+                'title' => $request['title'],
+                'price' => $price,
+                'quantity' => $request['quantity'],
+                'photo' => $request['photo'],
             ]);
+            //cart_detail
+            $at_id = $request['at_id'];
+            $at_detail_id = $request['at_detail_id'];
+            $n = count($at_id);
+            for ($i=1;$i<=$n;$i++) {
+                $at_title = Attribute::whereId($at_id[$i-1])->pluck('title');
+                $at_detail_title = Attribute_detail::whereId($at_detail_id[$i-1])->pluck('title');
+                $at_detail_price = Attribute_detail::whereId($at_detail_id[$i-1])->pluck('price');
+                $detail = $cart->cart_details()->create([
+                    'attribute_id' => $at_id[$i-1],
+                    'attribute_detail_id' => $at_detail_id[$i-1],
+                    'title' => $at_title[0],
+                    'subtitle' => $at_detail_title[0],
+                    'price' => $at_detail_price[0],
+                ]);
+            }
+            return redirect()->route('products.index');
+        }else{
+
+            return redirect()->route('login')->with('error', 'Please Login');
         }
 
-        return redirect()->route('products.index');
     }
 
     /**
